@@ -1,0 +1,124 @@
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Galmuri11';
+    cursor: none;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+#header {
+    position: fixed;
+    width: 100%;
+    background: #31006d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+#header h1 {
+    font-size: 20px;
+    color: #fff;
+    padding: 5px 0;
+}
+#header .time {
+    color: #fff;
+}
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #31006d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    color: #fff;
+}
+#footer .agent {
+    text-align: center;
+}
+.icon {
+    position: absolute;
+    left: 200px;
+    width: 80px;
+    text-align: center;
+}
+.icon1 {top: 150px;}
+.icon2 {top: 260px;}
+.icon3 {top: 370px;}
+.icon4 {top: 480px;}
+.icon5 {top: 590px;}
+.icon6 {top: auto; bottom: 200px; left: auto; right: 200px;}
+.icon img {
+    width: 100%;
+}
+.icon span {
+    display: inline-block;
+    background: #0009;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    padding: 2px 15px 3px;
+    white-space: nowrap;
+    font-weight: 700;
+}
+
+/* cursor */
+.mouse__cursor {
+    background: url(../img/cursor.svg) no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    user-select: none;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* source */
+.SourceInner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 550px;
+    padding: 40px 5px 5px;
+    background-color: #000;
+    border-radius: 3px;
+    position: relative;
+}
+.SourceInner.show {display: block;}
+.SourceInner iframe {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.SourceInner .SourceClose {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    z-index: 20;
+    color: #000;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 900;
+    text-align: center;
+    padding: 3px 9px 9px 11px;
+    border-radius: 5px;
+    background: #f9f9f9;
+    user-select: none;
+}
+.SourceInner .SourceClose:hover {
+    background: #ff00d0;
+    color: #fff;
+}

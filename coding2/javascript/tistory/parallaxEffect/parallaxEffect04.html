@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 : 기본 규칙</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/dracula.css">
+</head>
+
+<body>
+    <main id="main">
+        <div class="document">
+            <h2 class="t_tit">패럴랙스 이펙트 4</h2>
+            <p class="t_desc2">
+                이번 패럴랙스 효과는 스크롤이 내려가면 콘텐츠가 애니메이션과 함께 나타납니다. 
+                애니메이션을 어뗗게 주느냐에 따라 느낌이 달라지니, 잘 알아두었다가 활용해 봅시다!
+            </p>
+            <h3 class="t_tit2">HTML 코드</h3>
+            <p class="t_desc">
+                이번 패럴랙스는 메뉴 없이 컨텐츠로만 구성하였습니다.
+            </p>
+            <details>
+                <summary>HTML 보기</summary>
+                <div class="t_code">
+<pre><code class="language-js">&lt;main id="parallax__cont">
+    &lt;div id="contents">
+        &lt;section id="section01" class="content__item">
+            &lt;span class="content__item__num">01&lt;/span>
+            &lt;h2 class="content__item__title">section1&lt;/h2>
+            &lt;figure class="content__item__imgWrap">
+                &lt;div class="content__item__img">&lt;/div>
+            &lt;/figure>
+            &lt;p class="content__item__desc">질병은 입을 쫓아 들어가고 화근은 입을 좇아 나온다.&lt;/p>
+        &lt;/section>
+        &lt;!-- //section01 -->
+        .
+        .
+        .
+    &lt;/div>
+&lt;/main>
+&lt;!-- main -->
+</code></pre>
+                </div>
+            </details>
+            <h3 class="t_tit2">CSS 코드</h3>
+            <p class="t_desc">
+                이번 패럴랙스는 회전이나 위치 이동을 통해 나타나는 애니메이션을 주었습니다.
+            </p>
+            <details>
+                <summary>CSS 보기</summary>
+                <div class="t_code">
+<pre><code class="language-js">/* 한번에 나타나기 */
+/* #contents > section {
+    opacity: 0;
+    transition: all 1s;
+}
+#contents > section.show {
+    opacity: 1;
+} */
+
+/* 개별적으로 나타나기 */
+#contents > section .content__item__num {
+    opacity: 0;
+    transform: translateY(200px);
+    transition: all 1s 0.1s cubic-bezier(0, 0.84, 0.71, 1);
+}
+#contents > section .content__item__title {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 1s 0.3s cubic-bezier(0, 0.84, 0.71, 1);
+}
+#contents > section .content__item__imgWrap {
+    opacity: 0;
+    transform: translateY(200px) rotate(30deg) skew(20deg);
+    transition: all 1s 0.6s cubic-bezier(0, 0.84, 0.71, 1);
+}
+#contents > section .content__item__desc {
+    opacity: 0;
+    transform: translateY(-200px);
+    transition: all 1s 0.9s cubic-bezier(0, 0.84, 0.71, 1);
+}
+#contents > section.show .content__item__num {
+    opacity: 0.07;
+    transform: translateY(0);
+}
+#contents > section.show .content__item__title {
+    opacity: 1;
+    transform: translateX(0);
+}
+#contents > section.show .content__item__imgWrap {
+    opacity: 1;
+    transform: translateY(0) rotate(0) skew(0);
+}
+#contents > section.show .content__item__desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+#contents > section:nth-child(even) .content__item__title {
+    transform: translateX(100px);
+}
+#contents > section:nth-child(even).show .content__item__title {
+    transform: translateX(0);
+}
+#contents > section:nth-child(even) .content__item__imgWrap {
+    transform: translateY(200px) rotate(-30deg) skew(-20deg);
+}
+#contents > section:nth-child(even).show .content__item__imgWrap {
+    transform: translateY(0) rotate(0) skew(0);
+}
+</code></pre>
+                </div>
+            </details>
+            <h3 class="t_tit2">스크립트 요약</h3>
+            <p class="t_desc">
+                1. 스크롤 값을 구해, 스크롤이 일정 위치에 도달하면 함수가 실행되도록 합니다.<br>
+                2. 함수에는 컨텐츠의 각 요소에 show 클래스가 추가되는 실행문을 작성합니다.<br>
+                3. 스크롤 이벤트가 발생하면 해당 함수가 실행되도록 합니다.
+            </p>
+            <details>
+                <summary>전체 스크립트 보기</summary>
+                <div class="t_code">
+<pre><code class="language-js">function scroll(){
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop || window.screenY;
+
+    document.querySelectorAll(".content__item").forEach(item => {
+        if(scrollTop > item.offsetTop - window.innerHeight/2){
+            item.classList.add("show");
+        }
+    });
+    
+    requestAnimationFrame(scroll);
+};
+scroll();
+</code></pre>
+                </div>
+            </details>
+            <h3 class="t_tit2">스크립트 뜯어보기</h3>
+            <p class="t_desc2">
+                스크립트를 차근차근 뜯어보며 이해해 봅시다!
+            </p>
+            <p class="t_desc">
+                > 함수 작성하기<br>
+                : scroll이라는 함수를 작성하고 실행문도 함께 작성해 줍니다. 이 함수는 스크롤 이벤트가 발생할 때마다 실행시킬 예정입니다.
+            </p>
+            <div class="t_code">
+<pre><code class="language-js">function scroll(){};
+scroll();
+</code></pre><br>
+            </div>
+            <p class="t_desc">
+                > scroll 함수 실행문 작성 01<br>
+                : scrollTop 변수를 만들어 스크롤 값을 구해 저장해 줍니다.      
+            </p>
+            <div class="t_box">
+                ✔ <i>변수에 세가지 값을 모두 저장하는 이유</i><br>
+                ⇒ 특정 브라우저에서 호환성의 문제로 앞의 값을 불러오지 못할 때, 대안으로 뒤의 값을 불러오기 위함입니다.
+            </div>
+            <div class="t_code">
+<pre><code class="language-js">let scrollTop = window.pageYOffset || document.documentElement.scrollTop || window.screenY;
+</code></pre><br>
+            </div>
+            <p class="t_desc">
+                > scroll 함수 실행문 작성 02<br>
+                : 컨텐츠의 각 요소들을 선택한 후, 스크롤 값이 원하는 위치에 도달한 경우 각 요소에 show 클래스를 추가하는 반복문을 작성해 줍니다.
+                반복문(forEach) 안에 if문을 사용하여 해당 실행문을 작성할 수 있습니다. show 클래스는 css를 통해, 해당 클래스가 붙은 경우 컨텐츠가 나타나도록 작성하였습니다.
+            </p>
+            <div class="t_box">
+                ✔ <i>if문 뜯어보기</i><br>
+                item?<br>
+                ⇒ ForEach의 대상인 .content__item들 각각의 요소를 의미합니다.(section01, section002, …)<br>
+                item.offsetTop - window.innerHeight/2 ?<br>
+                ⇒ (각 섹션의 offsetTop 값) - (사용자에게 보이는 영역(window)의 안쪽 높이값 / 2 )는 섹션에서 화면 높이 반 만큼의 이전을 나타냅니다.<br>
+                즉, 스크롤 값이 섹션에 도달하기 전에 애니메이션을 작동시켜 섹션에 도달했을 때에는 컨텐츠를 안정적으로 볼 수 있게 하기 위함입니다.
+            </div>
+            <div class="t_code">
+<pre><code class="language-js">document.querySelectorAll(".content__item").forEach(item => {
+    if(scrollTop > item.offsetTop - window.innerHeight/2){
+        item.classList.add("show");
+    }
+});
+</code></pre><br>
+            </div>
+            <p class="t_desc">
+                > scroll 함수 실행문 작성 03<br>
+                : requestAnimationFrame() 메서드를 이용해, 스크롤 이벤트가 발생하면 scroll 함수를 실행하도록 합니다.
+            </p>
+            <div class="t_box">
+                ✔ <i>requestAnimationFrame() ?</i><br>
+                ⇒ requestAnimationFrame() 메서드는 addEventListener()의 scroll과 같이 스크롤 이벤트를 발생시키는 메서드입니다.
+                그러나, 브라우저에 최적화 되어 있기 때문에 addEventListener()보다 <i>훨씬 부드럽고 가볍다</i>는 장점이 있습니다.
+            </div>
+            <div class="t_box">
+                ✔ <i>재귀함수</i><br>
+                ⇒ 이 스크립트의 경우처럼, 어떤 <i>함수 안에 그 함수 자신의 실행문이 존재하는 것</i>을 재귀함수라고 합니다.
+            </div>
+            <div class="t_code">
+<pre><code class="language-js">requestAnimationFrame(scroll);
+</code></pre><br>
+            </div>
+            <h3 class="t_tit2">> 완성 페이지 보기</h3>
+            <div class="t_iframe" style="min-height: 700px; padding-top: 0;">
+                <iframe src="https://hjkang306.github.io/coding2/javascript/effect/parallaxEffect04.html" frameborder="0"></iframe>
+            </div>
+            <div class="t_link">
+                <a href="https://github.com/hjkang306/coding2/blob/main/javascript/effect/parallaxEffect04.html">원본 소스 보기</a>
+            </div>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</body>
+
+</html>

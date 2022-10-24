@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 : 데이터 불러오기</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dracula.css">
+</head>
+<body>
+    <header id="header">  
+    </header>
+    <!-- //header -->
+    <main id="main">
+        <div class="container">
+            <div class="main_menu">
+                <ul>
+                    <li>01. 패럴랙스 이펙트 : 메뉴 이동<a href="../effect/parallaxEffect01.html"> GO ⇒</a></a></li>
+                    <li>02. 패럴랙스 이펙트 : 사이드 메뉴<a href="../effect/parallaxEffect02.html"> GO ⇒</a></a></li>
+                    <li>03. 패럴랙스 이펙트 : 숨김 메뉴<a href="../effect/parallaxEffect03.html"> GO ⇒</a></a></li>
+                    <li>04. 패럴랙스 이펙트 : 나타나기<a href="../effect/parallaxEffect04.html"> GO ⇒</a></a></li>
+                    <li>05. 패럴랙스 이펙트 : 이질감 효과<a href="../effect/parallaxEffect05.html"> GO ⇒</a></a></li>
+                    <li>06. 패럴랙스 이펙트 : 텍스트 효과<a href="../effect/parallaxEffect06.html"> GO ⇒</a></a></li>
+                    <li>07. 패럴랙스 이펙트 : 리빌 효과<a href="../effect/parallaxEffect07.html"> GO ⇒</a></a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <!-- //main -->
+    <footer id="footer">
+        <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+    
+    <script src="../assets/js/highlight.min.js"></script>
+    <script src="../assets/js/headerMenu02.js"></script>
+    <script>
+        hljs.highlightAll();
+        
+        headerMenuIn();
+        const active = document.querySelectorAll(".header_nav ul li");
+        active[17].classList.add("active");
+    </script>
+</body>
+</html>

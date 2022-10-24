@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text type</title>
+
+    <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+
+    <style>
+        /* font */
+        .nexon {
+            font-family: 'NexonLv1Gothic';
+            font-weight: 400;
+        }
+        /* reset */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: normal;
+        }
+
+        em {
+            font-style: normal;
+        }
+
+        /* 블라인드 효과 */
+        .blind {
+            position:absolute;
+            clip:rect(0 0 0 0);
+            width:1px;
+            height:1px;
+            margin:-1px;
+            overflow:hidden
+        }
+
+        /* ir 효과(이미지 대체 효과 == alt) */
+        .ir {
+            display: block;
+            overflow: hidden;
+            font-size: 0;
+            line-height: 0;
+            text-indent: -9999px;
+        }
+
+        /* common */
+        .container {
+            width: 1160px;
+            margin: 0 auto;
+            min-width: 1160px;
+        }
+
+        .section {
+            padding: 120px 0;
+        }
+
+        .section > h2 {
+            font-size: 50px;
+            line-height: 1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section > p {
+            font-size: 22px;
+            font-weight: 300;
+            color: #666;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .section > span {
+            display: block;
+            text-align: center;
+            font-size: 16px;
+            text-decoration: underline;
+            margin-bottom: 16px;
+        }
+        .mb70 {
+            margin-bottom: 70px;
+        }
+        .skyBlue {
+            background-color: #f6f6fd;
+        }
+        /* textType */
+        .text__inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .text__inner .text {
+            width: 32%;
+            background: #fff;
+            padding: 30px;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+        .text__desc {
+            font-size: 18px;
+            line-height: 1.5;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f4f4f4;
+            font-weight: 300;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 7;
+            -webkit-box-orient: vertical;
+            min-height: 189px;
+        }
+        .text__info {
+            padding: 25px 0 25px 63px;
+            border-bottom: 1px solid #f4f4f4;
+            margin-bottom: 30px;
+        }
+        .text__info h3 {
+            font-size: 26px;
+            margin-bottom: 5px;
+            position: relative;
+            padding-top: 1px;
+        }
+        .text__info h3::before {
+            content: '';
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            position: absolute;
+            left: -63px;
+            top: 0;
+            background-position: center;
+            background-image: url("data:image/svg+xml,%3Csvg width='33' height='31' viewBox='0 0 33 31' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.0802 19.4233C19.8824 20.532 18.2581 21.1549 16.5645 21.1549C14.8709 21.1549 13.2466 20.532 12.0488 19.4233M11.7742 12.2851H11.7902M21.3548 12.2851H21.3708M30.9355 15.2421C30.9355 16.9895 30.5638 18.7199 29.8416 20.3343C29.1193 21.9487 28.0608 23.4156 26.7263 24.6513C25.3919 25.8869 23.8076 26.8671 22.064 27.5358C20.3205 28.2045 18.4517 28.5487 16.5645 28.5487C14.6773 28.5487 12.8085 28.2045 11.065 27.5358C9.32141 26.8671 7.73717 25.8869 6.4027 24.6513C5.06823 23.4156 4.00968 21.9487 3.28747 20.3343C2.56526 18.7199 2.19354 16.9895 2.19354 15.2421C2.19354 11.713 3.70762 8.32837 6.4027 5.8329C9.09778 3.33743 12.7531 1.93549 16.5645 1.93549C20.3759 1.93549 24.0312 3.33743 26.7263 5.8329C29.4214 8.32837 30.9355 11.713 30.9355 15.2421Z' stroke='%234857ec' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            background-repeat: no-repeat;
+            background-color: #dcdffb;
+        }
+        .text__info h3.c1::before {
+            background-color: #dcdffb;
+            background-image: url("data:image/svg+xml,%3Csvg width='33' height='31' viewBox='0 0 33 31' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.0802 19.4233C19.8824 20.532 18.2581 21.1549 16.5645 21.1549C14.8709 21.1549 13.2466 20.532 12.0488 19.4233M11.7742 12.2851H11.7902M21.3548 12.2851H21.3708M30.9355 15.2421C30.9355 16.9895 30.5638 18.7199 29.8416 20.3343C29.1193 21.9487 28.0608 23.4156 26.7263 24.6513C25.3919 25.8869 23.8076 26.8671 22.064 27.5358C20.3205 28.2045 18.4517 28.5487 16.5645 28.5487C14.6773 28.5487 12.8085 28.2045 11.065 27.5358C9.32141 26.8671 7.73717 25.8869 6.4027 24.6513C5.06823 23.4156 4.00968 21.9487 3.28747 20.3343C2.56526 18.7199 2.19354 16.9895 2.19354 15.2421C2.19354 11.713 3.70762 8.32837 6.4027 5.8329C9.09778 3.33743 12.7531 1.93549 16.5645 1.93549C20.3759 1.93549 24.0312 3.33743 26.7263 5.8329C29.4214 8.32837 30.9355 11.713 30.9355 15.2421Z' stroke='%234857ec' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        }
+        .text__info h3.c2::before {
+            background-color: #FFE0E0;
+            background-image: url("data:image/svg+xml,%3Csvg width='33' height='31' viewBox='0 0 33 31' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.0802 19.4233C19.8824 20.532 18.2581 21.1549 16.5645 21.1549C14.8709 21.1549 13.2466 20.532 12.0488 19.4233M11.7742 12.2851H11.7902M21.3548 12.2851H21.3708M30.9355 15.2421C30.9355 16.9895 30.5638 18.7199 29.8416 20.3343C29.1193 21.9487 28.0608 23.4156 26.7263 24.6513C25.3919 25.8869 23.8076 26.8671 22.064 27.5358C20.3205 28.2045 18.4517 28.5487 16.5645 28.5487C14.6773 28.5487 12.8085 28.2045 11.065 27.5358C9.32141 26.8671 7.73717 25.8869 6.4027 24.6513C5.06823 23.4156 4.00968 21.9487 3.28747 20.3343C2.56526 18.7199 2.19354 16.9895 2.19354 15.2421C2.19354 11.713 3.70762 8.32837 6.4027 5.8329C9.09778 3.33743 12.7531 1.93549 16.5645 1.93549C20.3759 1.93549 24.0312 3.33743 26.7263 5.8329C29.4214 8.32837 30.9355 11.713 30.9355 15.2421Z' stroke='%23C66464' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        }
+        .text__info h3.c3::before {
+            background-color: #E8FFD6;
+            background-image: url("data:image/svg+xml,%3Csvg width='33' height='31' viewBox='0 0 33 31' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.0802 19.4233C19.8824 20.532 18.2581 21.1549 16.5645 21.1549C14.8709 21.1549 13.2466 20.532 12.0488 19.4233M11.7742 12.2851H11.7902M21.3548 12.2851H21.3708M30.9355 15.2421C30.9355 16.9895 30.5638 18.7199 29.8416 20.3343C29.1193 21.9487 28.0608 23.4156 26.7263 24.6513C25.3919 25.8869 23.8076 26.8671 22.064 27.5358C20.3205 28.2045 18.4517 28.5487 16.5645 28.5487C14.6773 28.5487 12.8085 28.2045 11.065 27.5358C9.32141 26.8671 7.73717 25.8869 6.4027 24.6513C5.06823 23.4156 4.00968 21.9487 3.28747 20.3343C2.56526 18.7199 2.19354 16.9895 2.19354 15.2421C2.19354 11.713 3.70762 8.32837 6.4027 5.8329C9.09778 3.33743 12.7531 1.93549 16.5645 1.93549C20.3759 1.93549 24.0312 3.33743 26.7263 5.8329C29.4214 8.32837 30.9355 11.713 30.9355 15.2421Z' stroke='%236AAF35' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        }
+        .text__info h3 em {
+            font-size: 16px;
+            font-weight: 300;
+        }
+        .text__info .star span {
+            width: 16px;
+            height: 15px;
+            display: inline-block;
+            background: url(img/starN.svg);
+        }
+        .text__info .star span.fill {
+            background: url(img/star.svg) no-repeat;
+        }
+        .text_btn {
+            text-align: center;
+        }
+        .text_btn a {
+            background: #4857ec;
+            color: #fff;
+            display: inline-block;
+            border-radius: 50px;
+            padding: 10px 30px;
+        }
+    </style>
+</head>
+<body>
+    <section id="textType" class="text__wrap nexon section skyBlue">
+        <h2>스터디 후기</h2>
+        <p>웹디자이너, 웹 퍼블리셔, 프론트앤드 개발자 멤버를 소개합니다.</p>
+        <div class="text__inner container">
+            <div class="text">
+                <p class="text__desc">불과 3달전만해도 여러 원인들로 인해 자존감이 밑바닥이였던 저에게 이 스터디는 너무 소중한 시간이었어요. 매일 마음속으로 울고싶다를 외쳤던 저였는데 이제는 조금이나마 이겨 낼 수 있을 것 같네요. 다음에 선생님 만났을 때는 많이 발전해있는 제가 되었으면 좋겠네요...</p>
+                <div class="text__info">
+                    <h3 class="c1">이태용 <em>웹스 24기</em></h3>
+                    <div class="star">
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                    </div>
+                </div>
+                <div class="text_btn">
+                    <a href="#">자세히 보기</a>
+                </div>
+            </div>
+            <div class="text">
+                <p class="text__desc">진심 학교나 학원보다 더 많이 배운거라고 생각하고, 무지하고 말안듣고 자존감바닥인 저를 팩폭도 해주시고, 버리지 않아주셔서 감사...합니다 쌤!!!!!!!!!!
+                   <br> 회사에서 잘리지않고,,, 존버하겠습니다!!!!!!!!!!!! </p>
+                <div class="text__info">
+                    <h3 class="c2">이희진 <em>웹스 24기</em></h3>
+                    <div class="star">
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="text_btn">
+                    <a href="#">자세히 보기</a>
+                </div>
+            </div>
+            <div class="text">
+                <p class="text__desc">제가 게을러서 의도치않게 자꾸 말을 안듣는 학생이 되었었지만 정말 선생님 말씀 틀린거 하나도 없었다는거 잘 알고있습니다,,, ㅎㅎ 
+                    아 그리고 마지막 하고 싶은 말은 저 새벽 5~6시에 자는 ㄹㅇ올빼미형인간인데... 쌤이랑 두달 공부했다고.....</p>
+                <div class="text__info">
+                    <h3 class="c3">정승연 <em>웹스 24기</em></h3>
+                    <div class="star">
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                        <span class="fill"></span>
+                    </div>
+                </div>
+                <div class="text_btn">
+                    <a href="#">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

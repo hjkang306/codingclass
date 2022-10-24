@@ -1,0 +1,14 @@
+#ad {
+    h2 {
+        @include blind;
+    }
+}
+.ad__inner {
+    @include border_bottom;
+    .ad {
+        height: 120px;
+        background-color: #ccc;
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+}

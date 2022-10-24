@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이용약관</title>
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <link rel="stylesheet" href="./asset/css/join.css">
+</head>
+
+<body class="body_bg">
+    <div id="skip">
+        <a href="#header">헤더 영역 바로가기</a>
+        <a href="#main">컨텐츠 영역 바로가기</a>
+        <a href="#footer">푸터 영역 바로가기</a>
+    </div>
+    <!-- //skip -->
+
+    <header id="header">
+        <div class="header__inner">
+            <div class="left">
+                <a href="main.html"><span class="blind">메인페이지 이동</span></a>
+            </div>
+            <div class="middle">
+                <ul>
+                    <li><a href="Today_issue.html">오늘의 이슈</a></li>
+                    <li><a href="Tip_infor.html">꿀팁 저장소</a></li>
+                    <li><a href="QnA_page.html">QnA</a></li>
+                    <li><a href="Notice.html">공지사항</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="#"><span class="blind">알림</span></a></li>
+                    <li><a href="board_write.html"><span class="blind">글쓰기</span></a></li>
+                    <li><a class="btn3" href="LoginForm.html">로그인</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <section class="container">
+            <div class="Agree_title">
+                <h2>이용 약관</h2>
+            </div>
+            <!-- // title -->
+
+            <div class="AgreeBox">
+                <form action="" method="post">
+                    <fieldset>
+                        <legend class="blind">개인정보 입력 폼</legend>
+                        <div>
+                            <label for="youName">이름</label>
+                            <input type="text" name="youName" id="youName" required>
+                        </div>
+                        
+                        <div>
+                            <label for="loginID">아이디</label>
+                            <input type="text" name="loginID" id="loginID" required>
+                            <div class="idCheck btn1">중복확인</div>
+                        </div>
+                        
+                        <div>
+                            <label for="loginPW">비밀번호</label>
+                            <input type="password" name="loginPW" id="loginPW" required>
+                        </div>
+
+                        <div>
+                            <label for="loginPWCheck">비밀번호 확인</label>
+                            <input type="password" name="loginPWCheck" id="loginPWCheck" required>
+                        </div>
+
+                        <div>
+                            <label for="youAddress1">주소</label>
+                            <input type="text" name="youAddress1" id="youAddress1" placeholder="우편번호" required>
+                            <div class="addressCheck btn1">주소 찾기</div>
+                            <label for="youAddress2" class="blind">주소</label>
+                            <input type="text" name="youAddress2" id="youAddress2" placeholder="주소" required>
+                            <label for="youAddress3" class="blind">주소</label>
+                            <input type="text" name="youAddress3" id="youAddress3" placeholder="상세주소" required>
+                        </div>
+
+                        <div>
+                            <label for="youPhone">연락처</label>
+                            <input type="text" name="youPhone" id="youPhone" required>
+                            <span class="warning">잘못된 형식입니다!</span>
+                        </div>
+
+                        <div>
+                            <label for="youEmail">이메일</label>
+                            <input type="email" name="youEmail" id="youEmail" required>
+                            <span class="warning">잘못된 형식입니다!</span>
+                        </div>
+                        
+                        <button type="submit" class="join__btn btn3">회원가입</button>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- // box -->
+        </section>
+    </main>
+
+</body>
+</html>
