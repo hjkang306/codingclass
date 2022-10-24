@@ -2,7 +2,7 @@ const headerMenuIn = () => {
     const headerMenu = document.querySelector("#header");
     menu = [];
     menu.push(`
-        <h1><a href="index.html">Javascript</a></h1>
+        <h1><a href="../index.html">Javascript</a></h1>
         <nav class="header_nav">
             <ul>
                 <li><a href="../javascript01.html">데이터 저장하기</a></li>
