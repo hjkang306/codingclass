@@ -62,7 +62,7 @@ body {
 #header h1 a{
     font-size: 60px;
     font-weight: 700;
-    color: #0243f1;
+    color: #4d6e0c;
     font-family: 'PyeongChangPeace';
 }
 .header_nav ul li {
@@ -70,20 +70,20 @@ body {
 }
 .header_nav ul li a {
     border-radius: 5px;
-    color: #0243f1;
-    border: 1px solid #0243f1;
+    color: #4d6e0c;
+    border: 1px solid #4d6e0c;
     padding: 8px 25px;
     display: inline-block;
     margin-bottom: 7px;
     font-family: 'GmarketSans';
 }
 .header_nav ul li.active a {
-    background-color: #0243f1;
+    background-color: #4d6e0c;
     color: #fff;
     font-family: 'GmarketSans';
 }
 .header_nav ul li a:hover {
-    background-color: #0243f1;
+    background-color: #4d6e0c;
     color: #fff;
 }
 .header_nav .study {
