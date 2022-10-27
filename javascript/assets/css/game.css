@@ -35,9 +35,9 @@ body {
     padding: 0 10px;
 }
 #header h1 {
-    font-size: 20px;
+    font-size: 25px;
     color: #fff;
-    padding: 5px 0;
+    padding: 10px 0;
 }
 #header .time {
     color: #fff;
@@ -124,39 +124,58 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 800px;
-    height: 550px;
-    padding: 40px 5px 5px;
-    background-color: #000;
+    width: 400px;
+    padding: 0 10px 10px;
+    background-color: rgb(137, 42, 220);
     border-radius: 3px;
     position: relative;
 }
 .SourceInner.show {
     display: block;
 }
-.SourceInner iframe {
-    width: 100%;
-    height: 100%;
+.SourceInner h3 {
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+    padding: 5px 0 6px;
+} 
+.SourceInner ul {
+    background: #d9d9d9;
     z-index: 10;
+    padding: 30px 50px 50px;
+}
+.SourceInner ul li {
+    margin-top: 20px;
+    /* list-style: none; */
+}
+.SourceInner ul li a {
+    color: #000;
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.SourceInner ul li:hover a{
+    color: rgb(137, 42, 220);
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 .SourceInner .SourceClose {
     position: absolute;
-    top: 5px;
+    top: 3px;
     right: 10px;
     z-index: 20;
-    color: #000;
-    font-size: 20px;
+    color: #fff;
+    font-size: 16px;
     line-height: 1;
     font-weight: 900;
     text-align: center;
-    padding: 3px 9px 9px 11px;
+    padding: 0px 6px 9px 7px;
     border-radius: 5px;
-    background: #f9f9f9;
+    border: 2px solid #fff;
     user-select: none;
 }
 .SourceInner .SourceClose:hover {
     background: #ff00d0;
-    color: #fff;
 }
 
 .scanlines {

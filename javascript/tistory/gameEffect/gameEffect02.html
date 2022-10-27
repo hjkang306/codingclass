@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 : 기본 규칙</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/dracula.css">
+</head>
+
+<body>
+    <main id="main">
+        <div class="document">
+            <h2 class="t_tit">게임 이펙트 - 카드 맞추기 게임</h2>
+            <p class="t_desc2">
+                지금까지 배운 css, javascript 지식을 총 출동하여 간단한 게임을 만들어 봅니다.
+            </p>
+
+            <h3 class="t_tit2">> 사이트 미리보기</h3>
+            <div class="t_iframe" style="min-height: 700px; padding-top: 0;">
+                <iframe src="https://hjkang306.github.io/codingclass/javascript/effect/gameEffect01.html" frameborder="0"></iframe>
+            </div>
+            <div class="t_link">
+                <a href="https://github.com/hjkang306/codingclass/blob/main/javascript/effect/gameEffect01.html">원본 소스 보기</a>
+            </div>
+            <br>
+            <h3 class="t_tit2">자바스크립트</h3>
+            <p class="t_desc">
+                작성한 자바스크립트 코드입니다. 오류도 있고 아직 미흡한 부분이 많지만 귀엽게 봐주세요^0^
+            </p>
+            <div class="t_code">
+<pre><code class="language-js">// 01 HTML/CSS 디자인 구성
+// 02 클릭한카드 뒤집기
+// 03 두개의 카드 뒤집고 확인하기(첫번째카드, 두번째카드)
+
+// 선택자 만들기
+const memoryWrap = document.querySelector(".memory__wrap"); //메모리 게임 가장 큰 부모박스
+const memoryCard = document.querySelector(".memory__card"); // 각각의 카드가 담긴 부모박스
+const memoryCards = document.querySelectorAll(".cards li"); //카드들
+const GameOverPopup = document.querySelector(".memory__gameOver__msg");
+const gameOverH3 = document.querySelector(".memory__gameOver__msg h3");
+const gameOverScore = document.querySelector(".gameOver__msg");
+const retryBtn = document.querySelector(".memory__retry__btn");
+const score = document.querySelector(".memory__score > span");
+
+let cardOne, cardTwo;   //첫번째 선택한 카드의 정보와 두번째 선택 한 카드의 정보를 저장할 변수
+let disableDeck = false;    //트리거 변수
+let matchedCard = 0;    //맞춘 카드의 짝 수
+let matchScore = 100;
+
+// 오디오를 배열에 저장
+let sound = [
+    "../assets/audio/match2.mp3",
+    "../assets/audio/match.mp3",
+    "../assets/audio/up.mp3",
+];
+// 각각의 오디오를 지정
+let soundMatch = new Audio(sound[0]);
+let soundUnMatch = new Audio(sound[1]);
+let soundSuccess = new Audio(sound[2]);
+
+// 카드 뒤집기
+function flipCard(e) {  // e는 이벤트가 발생한 카드
+    let clickedCard = e.target; //변수에 클릭된 카드를 저장
+
+    if (clickedCard != cardOne && !disableDeck) {   // 클릭된 카드가 첫번째로 선택한 카드가 아니면서, 트리거 변수가 false일 때 if문 실행
+        clickedCard.classList.add("flip");  // 클릭된 카드 뒤집기
+
+        if (!cardOne) { //cardOne이 비어있지 않은 경우 if문 실행
+            return (cardOne = clickedCard); // cardOne에 클릭된 카드 정보 저장 후 종료
+        }
+        cardTwo = clickedCard;  // cardOne에 값이 있는 경우 cardTwo에 클릭된 카드 정보 저장
+        disableDeck = true; //세번째 카드를 선택하지 못하도록 트리거 변수를 true로 변경
+
+        // 카드정보 가져오기
+        let cardOneImg = cardOne.querySelector(".back img").src;
+        let cardTwoImg = cardTwo.querySelector(".back img").src;
+
+        matchcards(cardOneImg, cardTwoImg);
+    }
+}
+// 카드 확인(두개의 이미지 비교)
+function matchcards(img1, img2) {
+    if (img1 == img2) {
+        // 같을 경우
+        matchedCard++;
+
+        if (matchedCard == 8) { // 모든 카드를 매치한 경우
+            soundSuccess.play();
+            memoryCard.style.pointerEvents = "none";    // 카드가 더이상 클릭되지 않도록 함
+            setTimeout(() => {
+                // alert("게임 승리!");
+                GameOverPopup.classList.add("show");
+                gameOverScore.innerHTML = `&lt;span>${matchScore}&lt;/span> 점입니다!`;
+            }, 500);
+        }
+        // 이벤트 버블 효과를 막기 위해 이벤트를 삭제
+        cardOne.removeEventListener("click", flipCard);
+        cardTwo.removeEventListener("click", flipCard);
+        // 저장된 정보 초기화
+        cardOne = cardTwo = "";
+        disableDeck = false;
+        soundMatch.play();
+    } else {
+        // 일치하지 않으면 틀린음악 + 이미지 쉐이크
+        setTimeout(() => {
+            cardOne.classList.add("shakeX");
+            cardTwo.classList.add("shakeX");
+        }, 400);
+
+        setTimeout(() => {
+            cardOne.classList.remove("shakeX", "flip");
+            cardTwo.classList.remove("shakeX", "flip");
+            cardOne = cardTwo = "";
+            disableDeck = false;
+        }, 1600);
+        matchScore = matchScore - 5;
+        soundUnMatch.play();
+        if(matchScore == 0){
+            memoryCard.style.pointerEvents = "none";
+            GameOverPopup.classList.add("show");
+            gameOverH3.innerText = "GAME OVER!";
+            gameOverScore.innerHTML = `&lt;span>${matchScore}&lt;/span> 점입니다!`;
+        }
+    }
+    score.innerText = matchScore;
+}
+
+// 카드 섞기
+function shuffledCard() {
+    cardOne = cardTwo = "";
+    disableDeck = false;
+    matchedCard = 0;
+    score.innerText = matchScore;
+
+    // 배열에 이미지를 섞기 위한 정보값을 저장
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
+    // 배열의 값을 랜덤하게 정렬함
+    let result = arr.sort(() => (Math.random() > 0.5 ? 1 : -1));
+
+    memoryCards.forEach((card, index) => {
+        card.classList.remove("flip");
+
+        setTimeout(() => {
+            card.classList.add("flip");
+        }, 200 * index);
+
+        setTimeout(() => {
+            card.classList.remove("flip");
+        }, 5000);
+
+        setTimeout(() => {
+            memoryCard.style.pointerEvents = "auto";
+        }, 200 * index + 5000);
+
+        // 랜덤하게 정렬한 배열을 통해 이미지를 랜덤하게 출력 -> 카드를 섞음
+        let imgTag = card.querySelector(".back img");
+        imgTag.src = `../assets/img/memory_img0${arr[index] + 1}.svg`;
+    });
+}
+
+// 리셋
+function memoryReset(){
+    memoryStartPopup.classList.add("show");
+    cardOne = cardTwo = '';
+    disableDeck = false;
+    matchedCard = 0;
+    matchScore = 100;
+    score.innerText = "0";
+    memoryCards.forEach((card) => {
+        card.classList.remove("flip");
+    });
+}
+
+// 카드 클릭
+memoryCards.forEach((card) => {
+    card.addEventListener("click", flipCard);
+});
+
+// 게임 시작 버튼 클릭
+const memoryStartBtn = document.querySelector(".memory__start__btn");
+const memoryStartPopup = document.querySelector(".memory__info");
+
+memoryStartBtn.addEventListener("click", () => {
+    memoryStartPopup.classList.remove("show");
+    
+    soundMatch.play();
+    shuffledCard();
+});
+
+// 재시작
+retryBtn.addEventListener("click", ()=>{
+    GameOverPopup.classList.remove("show");
+    memoryReset();
+});
+
+// 게임 끄기
+const memoryCloseBtn = document.querySelector(".memory__close__btn");
+
+memoryCloseBtn.addEventListener("click", ()=>{
+    memoryReset();
+});
+</code></pre>
+            </div>
+            <h3 class="t_tit2">HTML</h3>
+            <p class="t_desc">
+                다음은 HTML 코드입니다.
+            </p>
+            <div class="t_code">
+<pre><code class="language-html">&lt;div class="memory__wrap">
+    &lt;div class="memory__inner">
+        &lt;h2>그림 맞추기 게임&lt;/h2>
+        &lt;div class="memory__score">점수 : &lt;span>0&lt;/span>&lt;/div>
+        &lt;div class="memory__card">
+            &lt;ul class="cards">
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img02.svg"
+                            alt="뒷면 이미지01"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img02.svg"
+                            alt="뒷면 이미지01"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img03.svg"
+                            alt="뒷면 이미지02"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img03.svg"
+                            alt="뒷면 이미지02"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img04.svg"
+                            alt="뒷면 이미지03"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img04.svg"
+                            alt="뒷면 이미지03"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img05.svg"
+                            alt="뒷면 이미지04"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img05.svg"
+                            alt="뒷면 이미지04"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img06.svg"
+                            alt="뒷면 이미지05"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img06.svg"
+                            alt="뒷면 이미지05"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img07.svg"
+                            alt="뒷면 이미지06"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img07.svg"
+                            alt="뒷면 이미지06"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img08.svg"
+                            alt="뒷면 이미지07"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img08.svg"
+                            alt="뒷면 이미지07"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img09.svg"
+                            alt="뒷면 이미지08"
+                        />
+                    &lt;/div>
+                &lt;/li>
+                &lt;li>
+                    &lt;div class="view front">
+                        &lt;img
+                            src="../assets/img/memory_img01.svg"
+                            alt="앞면 이미지"
+                        />
+                    &lt;/div>
+                    &lt;div class="view back">
+                        &lt;img
+                            src="../assets/img/memory_img09.svg"
+                            alt="뒷면 이미지08"
+                        />
+                    &lt;/div>
+                &lt;/li>
+            &lt;/ul>
+        &lt;/div>
+        &lt;div class="memory__close__btn">
+            x&lt;span class="blind">닫기&lt;/span>
+        &lt;/div>
+        &lt;div class="memory__info show">
+            &lt;h3>게임 규칙!&lt;/h3>
+            &lt;ul class="memory__info__desc">
+                &lt;li>01. 5초동안 카드를 보여줍니다.&lt;/li>
+                &lt;li>02. 뒤집어진 카드의 짝을 맞춥니다.&lt;/li>
+                &lt;li>03. 짝을 틀리면 감점!&lt;/li>
+                &lt;li>04. 시간제한은 없습니다!&lt;/li>
+            &lt;/ul>
+            &lt;div class="memory__start__btn">START !&lt;/div>
+        &lt;/div>
+        &lt;div class="memory__gameOver__msg">
+            &lt;h3>GAME CLEAR!&lt;/h3>
+            &lt;div class="gameOver__msg">&lt;span>100&lt;/span> 점입니다!&lt;/div>
+            &lt;div class="memory__retry__btn">RETRY !&lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/div>
+</code></pre>
+            </div>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</body>
+
+</html>
