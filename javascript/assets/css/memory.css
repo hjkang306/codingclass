@@ -61,7 +61,7 @@
     pointer-events: none;
 }
 .memory__card .cards li.shakeX {
-    animation: shakeX 1s;
+    animation: shakeX 0.8s;
 }
 .memory__card .cards li .view.front {
     box-sizing: border-box;
@@ -94,7 +94,6 @@
 	border-radius: 10px;
 	border: 3px solid #fff;
 	animation: flicker 1.5s infinite alternate;
-	/* position: relative; */
 }
 .memory__info.show {
 	display: block;
@@ -105,7 +104,6 @@
 	font-size: 25px;
 	margin-bottom: 15px;
 }
-.memory__info__desc {}
 .memory__info__desc li {
 	font-size: 20px;
     color: #fff;
@@ -129,6 +127,61 @@
 	transform: translateX(-50%);
 }
 .memory__start__btn:hover {
+	color: rgb(210, 61, 255);
+	text-shadow: 0 0 5px #fff;
+}
+
+/* memory__gameOver__msg */
+.memory__gameOver__msg {
+    display: none;
+    width: 400px;
+    background: #000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+	padding: 50px 30px 70px;
+	border-radius: 10px;
+	border: 3px solid #fff;
+	animation: flicker 1.5s infinite alternate;
+}
+.memory__gameOver__msg.show {
+    display: block;
+}
+.memory__gameOver__msg h3 {
+    color: #fff;
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 15px;
+}
+.gameOver__msg {
+    font-size: 18px;
+    font-weight: normal;
+    color: #fff;
+    text-align: center;
+    line-height: 1.4;
+}
+.gameOver__msg span {
+    font-size: 20px;
+    font-weight: 900;
+}
+.memory__retry__btn {
+    display: inline-block;
+	font-size: 30px;
+	font-weight: 900;
+	text-align: center;
+	color: #fff;
+	background: #000;
+	border-radius: 10px;
+	padding: 12px 30px 14px;
+	border: 3px solid #fff;
+	animation: flicker3 1.5s infinite alternate;
+	position: absolute;
+	left: 50%;
+	bottom: -30px;
+	transform: translateX(-50%);
+}
+.memory__retry__btn:hover {
 	color: rgb(210, 61, 255);
 	text-shadow: 0 0 5px #fff;
 }
