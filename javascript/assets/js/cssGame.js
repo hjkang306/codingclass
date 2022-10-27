@@ -557,20 +557,23 @@ const cssProperty = [ //all, animation, background, flex, grid, string, table
     searchRestart.addEventListener("click", restart);
 
     // 서치게임
-    const searchClose2 = document.querySelectorAll(".search__header div");
-    searchClose2.addEventListener("click", ()=>{
-        searchResultWrap.classList.remove("show");
-        timeReamining = 120;
-        Score = 0;
-        searchCount.innerText = "0";
-
-        searchAnswers.innerHTML = "";
-        searchMissAnswers.innerHTML = "";
-
-        
-        searchAudio.pause();
-        searchAudioPlay.style.display = "none";
-        searchAudioStop.style.display = "block";
-
-        clearInterval(timeInterval);
-    });
+    const searchClose1 = document.querySelectorAll(".search__header div");
+    searchClose1.forEach( (e) => {
+        e.addEventListener("click", () => {
+            searchResultWrap.classList.remove("show");
+            searchStart.style.display = "block";
+            timeReamining = 120;
+            Score = 0;
+            searchCount.innerText = "0";
+    
+            searchAnswers.innerHTML = "";
+            searchMissAnswers.innerHTML = "";
+    
+            
+            searchAudio.pause();
+            searchAudioPlay.style.display = "none";
+            searchAudioStop.style.display = "block";
+            searchTime.innerText = displayTime();
+            clearInterval(timeInterval);
+        });
+    })

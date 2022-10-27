@@ -1,16 +1,30 @@
-@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+@import url("https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Galmuri11';
+    font-family: "Galmuri11";
     cursor: none;
 }
 body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    background-image: url(../img/gameeBgImg.png);
+    backdrop-filter: saturate(90%) brightness(140%) invert(15%);
 }
+
+/* 블라인드 효과 */
+.blind {
+    position:absolute;
+    clip:rect(0 0 0 0);
+    width:1px;
+    height:1px;
+    margin:-1px;
+    overflow:hidden
+}
+
+/*  */
 #header {
     position: fixed;
     width: 100%;
@@ -46,25 +60,45 @@ body {
 .icon {
     position: absolute;
     left: 200px;
-    width: 80px;
+    width: 100px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
-.icon1 {top: 150px;}
-.icon2 {top: 260px;}
-.icon3 {top: 370px;}
-.icon4 {top: 480px;}
-.icon5 {top: 590px;}
-.icon6 {top: auto; bottom: 200px; left: auto; right: 200px;}
+.icon1 {
+    top: 150px;
+}
+.icon2 {
+    top: 280px;
+}
+.icon3 {
+    top: 410px;
+}
+.icon4 {
+    top: 540px;
+}
+.icon5 {
+    top: 670px;
+}
+.icon6 {
+    top: auto;
+    bottom: 200px;
+    left: auto;
+    right: 200px;
+}
 .icon img {
     width: 100%;
+    margin-bottom: 5px;
 }
 .icon span {
     display: inline-block;
     background: #0009;
     border-radius: 5px;
     color: #fff;
-    font-size: 14px;
-    padding: 2px 15px 3px;
+    font-size: 18px;
+    padding: 2px 10px 3px;
     white-space: nowrap;
     font-weight: 700;
 }
@@ -97,7 +131,9 @@ body {
     border-radius: 3px;
     position: relative;
 }
-.SourceInner.show {display: block;}
+.SourceInner.show {
+    display: block;
+}
 .SourceInner iframe {
     width: 100%;
     height: 100%;
@@ -121,4 +157,75 @@ body {
 .SourceInner .SourceClose:hover {
     background: #ff00d0;
     color: #fff;
+}
+
+.scanlines {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 300;
+    opacity: 0.6;
+    will-change: opacity;
+    animation: opacity 3s linear infinite;
+}
+.scanlines:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.5) 51%
+    );
+    background-size: 100% 4px;
+    will-change: background, background-size;
+    animation: scanlines 0.2s linear infinite;
+}
+@keyframes scanlines {
+    from {
+        background: linear-gradient(
+            to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.5) 51%
+        );
+        background-size: 100% 4px;
+    }
+    to {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.5) 50%,
+            transparent 51%
+        );
+        background-size: 100% 4px;
+    }
+}
+@keyframes opacity {
+    0% {
+        opacity: 0.6;
+    }
+    20% {
+        opacity: 0.3;
+    }
+    35% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    60% {
+        opacity: 0.4;
+    }
+    80% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.6;
+    }
 }

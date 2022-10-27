@@ -4,13 +4,18 @@
     font-weight: normal;
     font-style: normal;
 }
-.music__wrap {}
-.music__inner {
-    width: 500px;
-    background: #5700d8;
+.music__wrap {
+    display: none;
     position: absolute;
     right: 100px;
     top: 100px;
+}
+.music__wrap.show {
+    display: block;
+}
+.music__inner {
+    width: 500px;
+    background: #5700d8;
     padding: 0 10px 10px;
     border-radius: 3px;
 }

@@ -3,16 +3,18 @@
 // 03 두개의 카드 뒤집고 확인하기(첫번째카드, 두번째카드)
 
 const memoryWrap = document.querySelector(".memory__wrap");
+const memoryCard = document.querySelector(".memory__card");
 const memoryCards = document.querySelectorAll(".cards li");
 
 let cardOne, cardTwo;
 let disableDeck = false;
 let matchedCard = 0;
+let matchScore = 100;
 
 let sound = [
     "../assets/audio/match2.mp3",
     "../assets/audio/match.mp3",
-    "../assets/audio/up.mp3"
+    "../assets/audio/up.mp3",
 ];
 let soundMatch = new Audio(sound[0]);
 let soundUnMatch = new Audio(sound[1]);
@@ -21,36 +23,39 @@ let soundSuccess = new Audio(sound[2]);
 // 카드 뒤집기
 function flipCard(e) {
     let clickedCard = e.target;
-    
+
     // if(!cardTwo){
     //     cardOne = NULL;
     //     cardTwo = NULL;
     // }
-    if(clickedCard !== cardOne && !disableDeck){
+    if (clickedCard !== cardOne && !disableDeck) {
         clickedCard.classList.add("flip");
-        
+
         if (!cardOne) {
-            return cardOne = clickedCard;
+            return (cardOne = clickedCard);
         }
         cardTwo = clickedCard;
         disableDeck = true;
-        
+
         // 카드정보 가져오기
         let cardOneImg = cardOne.querySelector(".back img").src;
         let cardTwoImg = cardTwo.querySelector(".back img").src;
-        
+
         matchcards(cardOneImg, cardTwoImg);
     }
 }
 // 카드 확인(두개의 이미지 비교)
 function matchcards(img1, img2) {
-    if(img1 == img2){
+    if (img1 == img2) {
         // 같을 경우
-        matchedCard++
+        matchedCard++;
 
-        if(matchedCard == 8){
-            alert("게임 승리!");
+        if (matchedCard == 8) {
             soundSuccess.play();
+            memoryCard.style.pointerEvents = "none";
+            setTimeout(() => {
+                alert("게임 승리!");
+            }, 500);
         }
         cardOne.removeEventListener("click", flipCard);
         cardTwo.removeEventListener("click", flipCard);
@@ -59,17 +64,18 @@ function matchcards(img1, img2) {
         soundMatch.play();
     } else {
         // 일치하지 않으면 틀린음악 + 이미지 쉐이크
-        setTimeout(()=>{
+        setTimeout(() => {
             cardOne.classList.add("shakeX");
             cardTwo.classList.add("shakeX");
-        },500);
+        }, 500);
 
-        setTimeout(()=>{
+        setTimeout(() => {
             cardOne.classList.remove("shakeX", "flip");
             cardTwo.classList.remove("shakeX", "flip");
             cardOne = cardTwo = "";
             disableDeck = false;
         }, 1600);
+        matchScore = matchScore -
         soundUnMatch.play();
     }
 }
@@ -80,28 +86,40 @@ function shuffledCard() {
     disableDeck = false;
     matchedCard = 0;
 
-    let arr = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8];
-    let result = arr.sort(() => Math.random() > 0.5 ? 1 : -1);
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
+    let result = arr.sort(() => (Math.random() > 0.5 ? 1 : -1));
 
-    memoryCards.forEach((card, index) =>{
+    memoryCards.forEach((card, index) => {
         card.classList.remove("flip");
 
-        setTimeout(()=>{
+        setTimeout(() => {
             card.classList.add("flip");
         }, 200 * index);
 
-        setTimeout(()=>{
+        setTimeout(() => {
             card.classList.remove("flip");
-        }, 4000);
+        }, 5000);
+
+        setTimeout(() => {
+            memoryCard.style.pointerEvents = "all";
+        }, 200 * index + 5000);
 
         let imgTag = card.querySelector(".back img");
-        imgTag.src = `../assets/img/memory_img0${arr[index]+1}.svg`;
+        imgTag.src = `../assets/img/memory_img0${arr[index] + 1}.svg`;
     });
 }
 
-shuffledCard();
-
 // 카드 클릭
 memoryCards.forEach((card) => {
-  card.addEventListener("click", flipCard);
+    card.addEventListener("click", flipCard);
+});
+
+// 게임 시작 버튼 클릭
+const memoryStartBtn = document.querySelector(".memory__start__btn");
+const memoryStartPopup = document.querySelector(".memory__info");
+
+memoryStartBtn.addEventListener("click", () => {
+    memoryStartPopup.classList.remove("show");
+
+    shuffledCard();
 });

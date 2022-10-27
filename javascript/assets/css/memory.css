@@ -1,120 +1,218 @@
 .memory__wrap {
+    display: none;
+    position: absolute;
+    left: 700px;
+    top: 200px;
+}
+.memory__wrap.show {
+    display: block;
 }
 .memory__inner {
-  width: 500px;
-  height: 500px;
-  border: 3px solid #fff;
-  background: #000;
-  position: absolute;
-  left: 300px;
-  top: 100px;
-  border-radius: 20px;
-  animation: flicker 1.5s infinite alternate;
+    width: 500px;
+    border: 3px solid #fff;
+    background: #000;
+    border-radius: 20px;
+    animation: flicker 1.5s infinite alternate;
+}
+.memory__inner h2 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 3px 3px 2px rgb(209, 58, 255);
+    margin-top: 30px;
+}
+.memory__score {
+    color: #fff;
+    font-weight: normal;
+    text-align: right;
+    text-shadow: 3px 3px 2px rgb(209, 58, 255);
+    margin-top: 5px;
+    margin-right: 30px;
+}
+.memory__score span {
+    font-weight: 900;
 }
 .memory__card {
-  padding: 30px;
+    padding: 30px;
+	pointer-events: none;
 }
 .memory__card .cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 .memory__card .cards li {
-  list-style: none;
-  width: 100px;
-  height: 100px;
-  /* background: rgb(236, 236, 236); */
-  border-radius: 10px;
-  position: relative;
-  transform-style: preserve-3d;
-  perspective: 500px;
+    list-style: none;
+    width: 100px;
+    height: 100px;
+    /* background: rgb(236, 236, 236); */
+    border-radius: 10px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 500px;
 }
 .memory__card .cards li .view {
-  padding: 20px;
-  position: absolute;
-  background: rgb(236, 236, 236);
-  border-radius: 10px;
-  backface-visibility: hidden;
-  transition: all 0.5s;
-  border: 1px solid rgb(255, 255, 255);
-  pointer-events: none;
+    padding: 20px;
+    position: absolute;
+    background: rgb(236, 236, 236);
+    border-radius: 50px;
+    backface-visibility: hidden;
+    transition: all 0.5s;
+    border: 1px solid rgb(255, 255, 255);
+    pointer-events: none;
 }
 .memory__card .cards li.shakeX {
     animation: shakeX 1s;
 }
 .memory__card .cards li .view.front {
-  box-sizing: border-box;
-  animation: flicker2 1.5s infinite alternate;
+    box-sizing: border-box;
+    animation: flicker2 1.5s infinite alternate;
 }
 .memory__card .cards li.flip .view.front {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 .memory__card .cards li .view.back {
-  background: rgb(216, 255, 200);
-  transform: rotateY(-180deg);
+    background: rgb(216, 255, 200);
+    transform: rotateY(-180deg);
 }
 .memory__card .cards li.flip .view.back {
-  transform: rotateY(0deg);
+    transform: rotateY(0deg);
 }
 .memory__card .cards li .view img {
-  width: 100%;
+    width: 100%;
+}
+
+/* memory__info */
+.memory__info {
+	display: none;
+    width: 400px;
+    background: #000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+	padding: 30px 30px 70px;
+	border-radius: 10px;
+	border: 3px solid #fff;
+	animation: flicker 1.5s infinite alternate;
+	/* position: relative; */
+}
+.memory__info.show {
+	display: block;
+}
+.memory__info h3 {
+	color: #fff;
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 15px;
+}
+.memory__info__desc {}
+.memory__info__desc li {
+	font-size: 20px;
+    color: #fff;
+    list-style: none;
+	margin-top: 5px;
+}
+.memory__start__btn {
+	display: inline-block;
+	font-size: 30px;
+	font-weight: 900;
+	text-align: center;
+	color: #fff;
+	background: #000;
+	border-radius: 10px;
+	padding: 12px 30px 14px;
+	border: 3px solid #fff;
+	animation: flicker3 1.5s infinite alternate;
+	position: absolute;
+	left: 50%;
+	bottom: -30px;
+	transform: translateX(-50%);
+}
+.memory__start__btn:hover {
+	color: rgb(210, 61, 255);
+	text-shadow: 0 0 5px #fff;
+}
+
+/* memory__close__btn */
+.memory__close__btn {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    padding: 1px 14px 9px 17px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: #000;
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker3 1.5s infinite alternate;
 }
 
 @keyframes flicker {
-  0%,
-  100% {
-    box-shadow: 0 0 0.3rem #fff, inset 0 0 0.3rem #fff,
-      0 0 1rem rgb(209, 58, 255), inset 0 0 1rem rgb(209, 58, 255),
-      0 0 2rem rgb(209, 58, 255), inset 0 0 2rem rgb(209, 58, 255);
-  }
+    0%,
+    100% {
+        box-shadow: 0 0 0.3rem #fff, inset 0 0 0.3rem #fff,
+            0 0 1rem rgb(209, 58, 255), inset 0 0 1rem rgb(209, 58, 255),
+            0 0 2rem rgb(209, 58, 255), inset 0 0 2rem rgb(209, 58, 255);
+    }
 }
 @keyframes flicker2 {
-  0%,
-  100% {
-    box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff,
-      0 0 0.5rem rgb(58, 255, 179), inset 0 0 0.5rem rgb(58, 255, 179),
-      0 0 1rem rgb(58, 255, 179), inset 0 0 1rem rgb(58, 255, 179);
-  }
+    0%,
+    100% {
+        box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff,
+            0 0 0.5rem rgb(58, 255, 179), inset 0 0 0.5rem rgb(58, 255, 179),
+            0 0 1rem rgb(58, 255, 179), inset 0 0 1rem rgb(58, 255, 179);
+    }
+}
+@keyframes flicker3 {
+    0%,
+    100% {
+        box-shadow: 0 0 0.2rem #fff, inset 0 0 0.2rem #fff,
+            0 0 0.9rem rgb(209, 58, 255), inset 0 0 0.9rem rgb(209, 58, 255),
+            0 0 1rem rgb(209, 58, 255), inset 0 0 1rem rgb(209, 58, 255);
+    }
 }
 @keyframes shakeX {
-  from,
-  to {
-    transform: translate3d(0, 0, 0);
-  }
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
 
-  10%,
-  30%,
-  50%,
-  70%,
-  90% {
-    transform: translate3d(-10px, 0, 0);
-  }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(-5px, 0, 0);
+    }
 
-  20%,
-  40%,
-  60%,
-  80% {
-    transform: translate3d(10px, 0, 0);
-  }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(5px, 0, 0);
+    }
 }
 @keyframes shakeY {
-  from,
-  to {
-    transform: translate3d(0, 0, 0);
-  }
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
 
-  10%,
-  30%,
-  50%,
-  70%,
-  90% {
-    transform: translate3d(0, -10px, 0);
-  }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(0, -10px, 0);
+    }
 
-  20%,
-  40%,
-  60%,
-  80% {
-    transform: translate3d(0, 10px, 0);
-  }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(0, 10px, 0);
+    }
 }
