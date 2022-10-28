@@ -84,7 +84,7 @@ function matchcards(img1, img2) {
         }, 1600);
         matchScore = matchScore - 5;
         soundUnMatch.play();
-        if(matchScore == 0){
+        if (matchScore == 0) {
             memoryCard.style.pointerEvents = "none";
             GameOverPopup.classList.add("show");
             gameOverH3.innerText = "GAME OVER!";
@@ -119,15 +119,20 @@ function shuffledCard() {
             memoryCard.style.pointerEvents = "auto";
         }, 200 * index + 5000);
 
+        // 클릭 카드 뒤집기
+        memoryCards.forEach((card) => {
+            card.addEventListener("click", flipCard);
+        });
+
         let imgTag = card.querySelector(".back img");
         imgTag.src = `../assets/img/memory_img0${arr[index] + 1}.svg`;
     });
 }
 
 // 리셋
-function memoryReset(){
+function memoryReset() {
     memoryStartPopup.classList.add("show");
-    cardOne = cardTwo = '';
+    cardOne = cardTwo = "";
     disableDeck = false;
     matchedCard = 0;
     matchScore = 100;
@@ -138,9 +143,9 @@ function memoryReset(){
 }
 
 // 카드 클릭
-memoryCards.forEach((card) => {
-    card.addEventListener("click", flipCard);
-});
+// memoryCards.forEach((card) => {
+//     card.addEventListener("click", flipCard);
+// });
 
 // 게임 시작 버튼 클릭
 const memoryStartBtn = document.querySelector(".memory__start__btn");
@@ -148,13 +153,13 @@ const memoryStartPopup = document.querySelector(".memory__info");
 
 memoryStartBtn.addEventListener("click", () => {
     memoryStartPopup.classList.remove("show");
-    
+
     soundMatch.play();
     shuffledCard();
 });
 
 // 재시작
-retryBtn.addEventListener("click", ()=>{
+retryBtn.addEventListener("click", () => {
     GameOverPopup.classList.remove("show");
     memoryReset();
 });
@@ -162,7 +167,6 @@ retryBtn.addEventListener("click", ()=>{
 // 게임 끄기
 const memoryCloseBtn = document.querySelector(".memory__close__btn");
 
-memoryCloseBtn.addEventListener("click", ()=>{
+memoryCloseBtn.addEventListener("click", () => {
     memoryReset();
 });
-
