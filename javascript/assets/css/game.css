@@ -121,14 +121,13 @@ body {
 .SourceInner {
     display: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 100px;
+    right: 400px;
     width: 400px;
     padding: 0 10px 10px;
     background-color: rgb(137, 42, 220);
     border-radius: 3px;
-    position: relative;
+    /* position: relative; */
 }
 .SourceInner.show {
     display: block;
@@ -169,7 +168,7 @@ body {
     line-height: 1;
     font-weight: 900;
     text-align: center;
-    padding: 0px 6px 9px 7px;
+    padding: 1px 6px 7px 7px;
     border-radius: 5px;
     border: 2px solid #fff;
     user-select: none;

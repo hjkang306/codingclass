@@ -59,7 +59,7 @@
         <!-- //footer -->
 
         <div class="game__box">
-            <div class="music__wrap show">
+            <div class="music__wrap wrap show">
                 <div class="music__inner">
                     <div class="music__header">
                         <div>xx</div>
@@ -157,7 +157,7 @@
             </div>
             <!-- //music__wrap -->
 
-            <div class="search__wrap">
+            <div class="search__wrap wrap">
                 <div class="search__header">
                     <div>xx</div>
                     <h2>CSS 속성 검색 게임</h2>
@@ -320,7 +320,7 @@
             </div>
             <!-- //search__wrap -->
 
-            <div class="memory__wrap">
+            <div class="memory__wrap wrap">
                 <div class="memory__inner">
                     <h2>그림 맞추기 게임</h2>
                     <div class="memory__score">점수 : <span>0</span></div>
@@ -606,14 +606,14 @@
         <!-- 아이콘 -->
         <script>
             $(".icon").draggable({
-                drag: function () {
-                    $(".mouse__cursor").style;
-                },
+                // drag: function () {
+                //     $(".mouse__cursor").style;
+                // },
             });
-            $(".music__wrap").draggable();
-            $(".memory__wrap").draggable();
-            $(".search__wrap").draggable();
-            $(".SourceInner").draggable();
+            $(".music__wrap").draggable({stack: ".wrap", opacity: 0.8});
+            $(".memory__wrap").draggable({stack: ".wrap", opacity: 0.8});
+            $(".search__wrap").draggable({stack: ".wrap", opacity: 0.8});
+            $(".SourceInner").draggable({stack: ".wrap", opacity: 0.8});
 
             function printTime() {
                 const clock = document.querySelector(".time");

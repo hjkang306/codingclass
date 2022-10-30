@@ -400,6 +400,9 @@ const cssProperty = [ //all, animation, background, flex, grid, string, table
     const searchResultWrap = document.querySelector(".search__result");
     const searchRestart = document.querySelector(".search__result .restart");
 
+    let goodJobSound = new Audio("../assets/audio/match2.mp3");
+    let clearSound = new Audio("../assets/audio/up.mp3");
+
     let timeReamining = 120,    //남은시간
         timeInterval = "",  //시간 간격
         Score = 0,    //점수
@@ -440,6 +443,9 @@ const cssProperty = [ //all, animation, background, flex, grid, string, table
         let input = event.currentTarget.value.trim().toLowerCase();
         
         if(answers.hasOwnProperty(input) && !answers[input]){
+            //정답 사운드
+            goodJobSound.play();
+
             answers[input] = true;  //정답일 경우 true로 바꿔주기
             Score++;    //점수++
 
@@ -449,10 +455,7 @@ const cssProperty = [ //all, animation, background, flex, grid, string, table
             //점수 표시
             searchCount.innerHTML = Score;
 
-            //정답 사운드
-            // searchAudioC.play();
-
-            //정답 초기화
+            //정답란 초기화
             searchInput.value = "";
         }
 
@@ -503,6 +506,7 @@ const cssProperty = [ //all, animation, background, flex, grid, string, table
     //게임 끝났을 때
     function endQuiz(){
         // alert("게임이 끝났습니다.");
+        clearSound.play();
         //시작버튼 만들기
         searchStart.style.display = "block";
         searchStart.style.pointerEvents = "none";

@@ -13,53 +13,57 @@
 <body>
     <main id="main">
         <div class="document">
-            <h2 class="t_tit">프로그래머스 1단계 - 약수의 합</h2>
+            <h2 class="t_tit">프로그래머스 1단계 - 정수 제곱근 판별</h2>
             <h3 class="t_tit2">🍞 문제 설명</h3>
             <p class="t_desc2">
-                정수 n을 입력받아 n의 약수를 모두 더한 값을 리턴하는 함수, solution을 완성해주세요.
+                임의의 양의 정수 n에 대해, n이 어떤 양의 정수 x의 제곱인지 아닌지 판단하려 합니다.<br>
+                n이 양의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고, n이 양의 정수 x의 제곱이 아니라면 -1을 리턴하는 함수를 완성하세요.
             </p>
             <hr>
             <h3 class="t_tit2">🍞 제한 조건</h3>
             <p class="t_desc2">
-                n은 0 이상 3000이하인 정수입니다..<br>
+                n은 1이상, 50000000000000 이하인 양의 정수입니다.
             </p>
             <hr>
             <h3 class="t_tit2">🍞 입출력 예</h3>
             <table class="t_table">
                 <thead>
                     <tr>
-                        <th class="ce">num</th>
+                        <th class="ce">n</th>
                         <th class="ce">return</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>12</td>
-                        <td class="ce">28</td>
+                        <td>121</td>
+                        <td class="ce">144</td>
                     </tr>
                     <tr>
-                        <td>5</td>
-                        <td class="ce">6</td>
+                        <td>3</td>
+                        <td class="ce">-1</td>
                     </tr>
                 </tbody>
             </table>
             <p class="t_box">
                 입출력 예 #1<br>
-                12의 약수는 1, 2, 3, 4, 6, 12입니다. 이를 모두 더하면 28입니다.<br><br>
+                121은 양의 정수 11의 제곱이므로, (11+1)를 제곱한 144를 리턴합니다.<br><br>
 
                 입출력 예 #2<br>
-                5의 약수는 1, 5입니다. 이를 모두 더하면 6입니다.
+                3은 양의 정수의 제곱이 아니므로, -1을 리턴합니다.
             </p>
             <hr>
             <h3 class="t_tit2">🍞 문제 풀이</h3>
             <p class="t_desc">
-                for 문을 사용하여 반복하며 i의 값을 증가시키고, n의 약수인 경우 answer에 합해지도록 하였습니다.(16번 케이스 유의!)
+                Math.sqrt()로 제곱근을 구하고 isInteger로 정수 여부를 판단하여 answer에 적절한 값을 넣었습니다.
             </p>
             <div class="t_code">
 <pre><code class="language-js">function solution(n) {
     var answer = 0;
-    for( i=0; i&lt;=3000; i++){
-        (n%i == 0 && n != 0) ? answer += i : answer;
+    let number = Math.sqrt(n);
+    if(Number.isInteger(number)){
+        answer = Math.pow((number + 1), 2);
+    } else {
+        answer = -1;
     }
     return answer;
 }
@@ -68,20 +72,28 @@
             <hr>
             <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
             <p class="t_desc">
-                굳이 3000까지 계산해볼 필요가 없었던 것 같습니다.
+                수학 메서드 없이 이런 식으로 풀 수도 있네요
             </p>
             <div class="t_code">
-<pre><code class="language-js">function solution(num) {
-    let sum = 0;
-    for (let i = 1; i &lt;= num; i++) {
-        if (num % i === 0) sum += i
+<pre><code class="language-js">function nextSqaure(n){
+    var result = 0;
+    var x = 0;
+    while (x*x &lt; n){
+      x++;
     }
-    return sum
+    if (x*x == n){
+      x++;
+      result = x*x; 
+    }else{
+      result = -1;
+    }
+  
+    return result;
 }
 </code></pre>
             </div>
             <div class="t_link">
-                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12928">문제 풀어보기</a>
+                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12934">문제 풀어보기</a>
             </div>
         </div>
     </main>

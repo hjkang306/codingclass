@@ -13,54 +13,58 @@
 <body>
     <main id="main">
         <div class="document">
-            <h2 class="t_tit">프로그래머스 1단계 - 약수의 합</h2>
+            <h2 class="t_tit">프로그래머스 1단계 - 자릿수 더하기</h2>
             <h3 class="t_tit2">🍞 문제 설명</h3>
             <p class="t_desc2">
-                정수 n을 입력받아 n의 약수를 모두 더한 값을 리턴하는 함수, solution을 완성해주세요.
+                자연수 N이 주어지면, N의 각 자릿수의 합을 구해서 return 하는 solution 함수를 만들어 주세요.<br>
+                예를들어 N = 123이면 1 + 2 + 3 = 6을 return 하면 됩니다.
             </p>
             <hr>
             <h3 class="t_tit2">🍞 제한 조건</h3>
             <p class="t_desc2">
-                n은 0 이상 3000이하인 정수입니다..<br>
+                N의 범위 : 100,000,000 이하의 자연수
             </p>
             <hr>
             <h3 class="t_tit2">🍞 입출력 예</h3>
             <table class="t_table">
                 <thead>
                     <tr>
-                        <th class="ce">num</th>
+                        <th class="ce">N</th>
                         <th class="ce">return</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>12</td>
-                        <td class="ce">28</td>
+                        <td>123</td>
+                        <td class="ce">6</td>
                     </tr>
                     <tr>
-                        <td>5</td>
-                        <td class="ce">6</td>
+                        <td>987</td>
+                        <td class="ce">24</td>
                     </tr>
                 </tbody>
             </table>
             <p class="t_box">
                 입출력 예 #1<br>
-                12의 약수는 1, 2, 3, 4, 6, 12입니다. 이를 모두 더하면 28입니다.<br><br>
+                문제의 예시와 같습니다.<br><br>
 
                 입출력 예 #2<br>
-                5의 약수는 1, 5입니다. 이를 모두 더하면 6입니다.
+                9 + 8 + 7 = 24이므로 24를 return 하면 됩니다.
             </p>
             <hr>
             <h3 class="t_tit2">🍞 문제 풀이</h3>
             <p class="t_desc">
-                for 문을 사용하여 반복하며 i의 값을 증가시키고, n의 약수인 경우 answer에 합해지도록 하였습니다.(16번 케이스 유의!)
+                문자로 바꾼 뒤 split하고 다시 숫자로 바꾸어 더해주었습니다. 숫자도 split 할 수 있었으면 좋겠습니다…
             </p>
             <div class="t_code">
-<pre><code class="language-js">function solution(n) {
-    var answer = 0;
-    for( i=0; i&lt;=3000; i++){
-        (n%i == 0 && n != 0) ? answer += i : answer;
+<pre><code class="language-js">function solution(n)
+{
+    let answer = 0;
+    let num = n.toString().split('');
+    for( x in num){
+        answer += Number(num[x]);
     }
+
     return answer;
 }
 </code></pre>
@@ -68,20 +72,16 @@
             <hr>
             <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
             <p class="t_desc">
-                굳이 3000까지 계산해볼 필요가 없었던 것 같습니다.
+                reduce 안에서 parsInt를 하면 숫자로 바꿔서 더할 수 있구나… 저 빼고 다 천재인 것 같네요.
             </p>
             <div class="t_code">
-<pre><code class="language-js">function solution(num) {
-    let sum = 0;
-    for (let i = 1; i &lt;= num; i++) {
-        if (num % i === 0) sum += i
-    }
-    return sum
+<pre><code class="language-js">function solution(n){
+    return (n+"").split("").reduce((acc, curr) => acc + parseInt(curr), 0);
 }
 </code></pre>
             </div>
             <div class="t_link">
-                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12928">문제 풀어보기</a>
+                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12931">문제 풀어보기</a>
             </div>
         </div>
     </main>

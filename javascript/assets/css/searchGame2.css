@@ -10,8 +10,7 @@
     border-radius: 3px;
     position: absolute;
     top: 250px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 400px;
     position: relative;
 }
 .search__wrap.show {
