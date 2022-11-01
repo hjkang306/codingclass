@@ -13,77 +13,65 @@
 <body>
     <main id="main">
         <div class="document">
-            <h2 class="t_tit">프로그래머스 1단계 - 자릿수 더하기</h2>
+            <h2 class="t_tit">프로그래머스 1단계 - 정수 내림차순으로 배치하기</h2>
             <h3 class="t_tit2">🍞 문제 설명</h3>
             <p class="t_desc2">
-                자연수 N이 주어지면, N의 각 자릿수의 합을 구해서 return 하는 solution 함수를 만들어 주세요.<br>
-                예를들어 N = 123이면 1 + 2 + 3 = 6을 return 하면 됩니다.
+                함수 solution은 정수 n을 매개변수로 입력받습니다. n의 각 자릿수를 큰것부터 작은 순으로 정렬한 새로운 정수를 리턴해주세요.<br>
+                예를들어 n이 118372면 873211을 리턴하면 됩니다.
             </p>
             <hr>
             <h3 class="t_tit2">🍞 제한 조건</h3>
             <p class="t_desc2">
-                N의 범위 : 100,000,000 이하의 자연수
+                n은 1이상 8000000000 이하인 자연수입니다.
             </p>
             <hr>
             <h3 class="t_tit2">🍞 입출력 예</h3>
             <table class="t_table">
                 <thead>
                     <tr>
-                        <th class="ce">N</th>
+                        <th class="ce">n</th>
                         <th class="ce">return</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>123</td>
-                        <td class="ce">6</td>
-                    </tr>
-                    <tr>
-                        <td>987</td>
-                        <td class="ce">24</td>
+                        <td>118372</td>
+                        <td>873211</td>
                     </tr>
                 </tbody>
             </table>
-            <p class="t_box">
-                입출력 예 #1<br>
-                문제의 예시와 같습니다.<br><br>
-
-                입출력 예 #2<br>
-                9 + 8 + 7 = 24이므로 24를 return 하면 됩니다.
-            </p>
             <hr>
             <h3 class="t_tit2">🍞 문제 풀이</h3>
             <p class="t_desc">
-                요번에도 삼항연산자와 split(), parseInt(), reduce()를 활용하였습니다. 재미있는 문제였습니다.
+                알고 있는 메서드를 남발해보았습니다.
             </p>
             <div class="t_code">
-<pre><code class="language-js">function solution(x) {
-    var answer = true;
-    let sum = x.toString().split('').reduce((p,c)=> parseInt(p) + parseInt(c));
-    return ( x % sum === 0) ? answer = true : answer = false;
+<pre><code class="language-js">function solution(n) {
+    var answer = parseInt(n.toString().split('').sort().reverse().reduce((p,c) => p + c));
+    return answer;
 }
 </code></pre>
             </div>
             <hr>
             <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
             <p class="t_desc">
-                이런 쉬운 방법이 있었다니…
+                아주 깔끔하게 보이는 풀이입니다. reduce()를 굳이 쓸 필요 없이 join()을 쓰면 되네요.
             </p>
             <div class="t_code">
-<pre><code class="language-js">function solution(x) {
-    let num = x;
-    let sum = 0;
-    do {
-        sum += x%10;
-        x = Math.floor(x/10);
-    } while (x>0);
+<pre><code class="language-js">function solution(n) {
+    const newN = n + "";
+    const newArr = newN
+        .split("")
+        .sort()
+        .reverse()
+        .join("");
 
-    return !(num%sum);
+    return +newArr;
 }
 </code></pre>
             </div>
             <div class="t_link">
-                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12947">문제 풀어보기</a>
+                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12933">문제 풀어보기</a>
             </div>
         </div>
     </main>
