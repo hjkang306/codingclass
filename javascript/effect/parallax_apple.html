@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>패럴랙스</title>
+    <link rel="stylesheet" href="../assets/css/fonts.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "NanumSquareNeo";
+      }
+      .fixed {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .scrollTop {
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        width: 50px;
+        height: 50px;
+        background: rgba(111, 0, 255, 0.3);
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 50px;
+        z-index: 10000;
+      }
+      /* font */
+      .font1 {
+        font-weight: normal;
+        font-family: "Cafe24ClassicType";
+      }
+      .font2 {
+        font-family: "Quicksand";
+        font-weight: 300;
+      }
+      .font3 {
+        font-family: "MapoDacapo";
+        font-weight: normal;
+      }
+      .font4 {
+        font-family: "Pacifico";
+        font-style: italic;
+        font-size: 4.8vw !important;
+      }
+      /* layout */
+      #contents {
+        height: 100000px;
+      }
+      #section1 {
+      }
+      #section2 {
+      }
+      #section3 {
+      }
+
+      /* sec1 */
+      .sec1_text1 {
+        font-weight: 300;
+        font-size: 8vw;
+        white-space: nowrap;
+      }
+      .sec1_text2-1 {
+        font-size: 4vw;
+        font-weight: 100;
+        white-space: nowrap;
+        color: rgb(106, 0, 228);
+      }
+      .sec1_text2,
+      .sec1_text3-1 {
+        font-weight: 300;
+        font-size: 8vw;
+        white-space: nowrap;
+      }
+      .sec1_text3 {
+        font-size: 6vw;
+        white-space: nowrap;
+      }
+
+      /* sec2 */
+      .sec2_text1 {
+        width: 60%;
+        height: 60vh;
+        background: url(../assets/img/강현지.jpg) no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+      .sec2_text2-1 {
+        font-weight: 300;
+        font-size: 6vw;
+        text-align: right;
+      }
+
+      /* sec3 */
+      .sec3 {
+        width: 100%;
+        height: 120vh;
+        background: rgb(223, 222, 217);
+      }
+      .sec3_text1 {
+        width: 60%;
+        height: 80vh;
+        background: url(../assets/img/appleImg01.jpg) no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scrollTop"></div>
+    <div id="contents">
+      <section id="section1">
+        <div class="sec1">
+          <div
+            class="sec1_text1 fixed"
+            data-0="top: 50%; opacity: 1"
+            data-500="top: 30%; opacity: 0"
+          >
+            안녕하세요!
+          </div>
+          <div
+            class="sec1_text2 fixed"
+            data-500="top: 50%; opacity: 0; transform: translate(-50%, -50%) scale(1);"
+            data-800="top: 30%; opacity: 1; transform: translate(-50%, -50%) scale(1);"
+            data-2600="top: 30%; opacity: 1; transform: translate(-50%, -50%) scale(1);"
+            data-2800="top: 30%; opacity: 1; transform: translate(-50%, -50%) scale(0);"
+          >
+            저는 …!
+          </div>
+          <div
+            class="sec1_text2-1 fixed"
+            data-1000="top: 60%; opacity: 0"
+            data-1200="top: 50%; opacity: 1"
+            data-1600="top: 50%; opacity: 1"
+            data-1800="top: 45%; opacity: 0"
+          >
+            프론트앤드 개발자를 꿈꾸는
+          </div>
+          <div
+            class="sec1_text2-1 fixed"
+            data-1700="top: 60%; opacity: 0"
+            data-2000="top: 50%; opacity: 1"
+            data-2400="top: 50%; opacity: 1"
+            data-2600="top: 45%; opacity: 0"
+          >
+            코딩 척척박사가 되고싶은
+          </div>
+          <div
+            class="sec1_text2 fixed"
+            data-700="top: 90%; opacity: 0; transform: translate(-50%, -50%) scale(1);"
+            data-1000="top: 70%; opacity: 1; transform: translate(-50%, -50%) scale(1);"
+            data-2600="top: 70%; opacity: 1; transform: translate(-50%, -50%) scale(1);"
+            data-2800="top: 70%; opacity: 1; transform: translate(-50%, -50%) scale(0);"
+          >
+            <span
+              data-1000="font-weight: 100;"
+              data-1400="font-weight: 900;"
+              data-1800="font-weight: 300;"
+              data-2200="font-weight: 900;"
+              data-2600="font-weight: 100;"
+              >강현지</span
+            >
+            입니다.
+          </div>
+          <div
+            class="sec1_text3 fixed"
+            data-2800="top: 70%; left: -100%; opacity: 0; transform: translate(-50%, -50%);"
+            data-3000="top: 50%; left: 50%; opacity: 1; transform: translate(-50%, -50%);"
+            data-3100="top: 50%; left: 50%; opacity: 1; transform: translate(-50%, -50%);"
+            data-3200="top: 40%; left: 50%; opacity: 1; transform: translate(-50%, -50%);"
+            data-3250="top: 50%; left: 50%; opacity: 1; transform: translate(-50%, -50%);"
+            data-3400="top: 50%; left: 50%; opacity: 1; transform: translate(-50%, -50%);"
+            data-3600="top: 50%; left: 140%; opacity: 1; transform: translate(-50%, -50%);"
+          >
+            ༼ つ ◕_◕ ༽つ ~⭐
+          </div>
+        </div>
+      </section>
+      <!-- //section1 -->
+      <section id="section2">
+        <div class="sec2">
+          <div
+            class="sec2_text1 fixed"
+            data-3300="top: 130%; opacity: 0"
+            data-3500="top: 50%; opacity: 1"
+          ></div>
+          <div
+            class="sec2_text2-1 fixed"
+            data-3800="top: 20%; left: -50%; opacity: 0"
+            data-4000="top: 20%; left: 10%; opacity: 1"
+          >
+            KANG
+          </div>
+          <div
+            class="sec2_text2-1 fixed"
+            data-3800="top: 30%; left: -50%; opacity: 0"
+            data-4200="top: 30%; left: 18%; opacity: 1"
+          >
+            HYEONJI
+          </div>
+          <div
+            class="sec2_text2-1 fixed font1"
+            data-4100="top: 50%; left: -50%; opacity: 0"
+            data-4300="top: 50%; left: 25%; opacity: 1"
+          >
+            INTJ
+          </div>
+          <div
+            class="sec2_text2-1 fixed font3"
+            data-4250="top: 55%; left: auto; right: 0%; opacity: 0"
+            data-4400="top: 55%; left: auto; right: 5%; opacity: 1"
+          >
+            INDOOR
+          </div>
+          <div
+            class="sec2_text2-1 fixed font3"
+            data-4300="top: 65%; left: auto; right: -50%; opacity: 0"
+            data-4500="top: 65%; left: auto; right: -13%; opacity: 1"
+          >
+            GARDENING
+          </div>
+          <div
+            class="sec2_text2-1 fixed font4"
+            data-4500="top: 85%; left: auto; right: -50%; opacity: 0"
+            data-4600="top: 85%; left: auto; right: -10%; opacity: 1"
+          >
+            DRAWING
+          </div>
+        </div>
+      </section>
+      <!-- //section2 -->
+      <section id="section3">
+        <div class="sec3 fixed" data-4800="top: 160%;" data-5100="top: 50%%;">
+          <div
+            class="sec3_text1 fixed"
+            data-5100="left: 25%;"
+            data-5200="left: 25%;"
+          ></div>
+        </div>
+      </section>
+      <!-- //section3 -->
+      <section id="section4"></section>
+      <!-- //section4 -->
+      <section id="section5"></section>
+      <!-- //section5 -->
+      <section id="section6"></section>
+      <!-- //section6 -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/skrollr@0.6.26/dist/skrollr.min.js"></script>
+    <script>
+      const s = skrollr.init();
+      function scroll() {
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        document.querySelector(".scrollTop").innerText = Math.ceil(scrollTop);
+
+        // document.querySelector(".sec1_text1").style.marginLeft = -scrollTop + "px";
+
+        // if(scrollTop>1300){
+        //     document.querySelector(".sec1_text2").style.opacity = 1;
+        //     document.querySelector(".sec1_text2").style.marginLeft = 3220 -scrollTop + "px";
+        // }
+        requestAnimationFrame(scroll);
+      }
+      scroll();
+    </script>
+  </body>
+</html>

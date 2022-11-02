@@ -13,7 +13,7 @@
 <body>
     <main id="main">
         <div class="document">
-            <h2 class="t_tit">프로그래머스 1단계 - 두 정수 사이의 합</h2>
+            <h2 class="t_tit">프로그래머스 1단계 - 콜라츠 추측</h2>
             <h3 class="t_tit2">🍞 문제 설명</h3>
             <p class="t_desc">
                 1937년 Collatz란 사람에 의해 제기된 이 추측은, 주어진 수가 1이 될 때까지 다음 작업을 반복하면, 모든 수를 1로 만들 수 있다는 추측입니다.<br>
@@ -71,15 +71,17 @@
             <hr>
             <h3 class="t_tit2">🍞 문제 풀이</h3>
             <p class="t_desc">
-                a와 b의 값을 비교하여 작으면 answer에 다음 값을 더하고 크면 이전 값을 더하는 식으로 구하였습니다.
+                while문을 이용해 식을 반복하고 삼항연산자를 사골처럼 우려보았습니다.
             </p>
             <div class="t_code">
-<pre><code class="language-js">function solution(a, b) {
-    let answer = num = a;
-    while(num != b){
-        (a &lt; b) ? num++ : num-- ;
-        answer += num;
+<pre><code class="language-js">function solution(num) {
+    var answer = 0;
+    let x = 0
+    while( num!=1 && x&lt;500 ){
+        x++;
+        (num%2 == 0) ? num=num/2 : num=num*3+1;
     }
+    (x == 500) ? answer = -1 : answer = x ;
     return answer;
 }
 </code></pre>
@@ -87,17 +89,19 @@
             <hr>
             <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
             <p class="t_desc">
-                수학 풀이 알고리즘은 역시 수학을 잘 해야 하나봅니다.
+                삼항연산자 안에 삼항 연산자를 쓸 수 있다니… 새로운 걸 알았습니다.
             </p>
             <div class="t_code">
-<pre><code class="language-js">function adder(a, b){
-    var result = 0
-    return (a+b)*(Math.abs(b-a)+1)/2;
-}
+<pre><code class="language-js">const solution = (num) => collatzGuessCount(num, 0);
+
+const collatzGuessCount = (num, acc) => 
+    (num === 1) ? ((acc > 500) ? -1 : acc) : collatzGuessCount(processCollatz(num), acc + 1);
+
+const processCollatz = (num) => (num % 2 === 0) ? (num / 2) : (num * 3 + 1);
 </code></pre>
             </div>
             <div class="t_link">
-                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12912">문제 풀어보기</a>
+                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12943">문제 풀어보기</a>
             </div>
         </div>
     </main>

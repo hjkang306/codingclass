@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dracula.css">
+</head>
+
+<body>
+    <main id="main">
+        <div class="document">
+            <h2 class="t_tit">프로그래머스 1단계 - 서울에서 김서방 찾기</h2>
+            <h3 class="t_tit2">🍞 문제 설명</h3>
+            <p class="t_desc">
+                String형 배열 seoul의 element중 "Kim"의 위치 x를 찾아, "김서방은 x에 있다"는 String을 반환하는 함수, solution을 완성하세요.<br>
+                seoul에 "Kim"은 오직 한 번만 나타나며 잘못된 값이 입력되는 경우는 없습니다.
+            </p>
+            <hr>
+            <h3 class="t_tit2">🍞 제한 조건</h3>
+            <p class="t_desc2">
+                예를 들어, 주어진 수가 6이라면 6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → 1 이 되어 총 8번 만에 1이 됩니다.<br>
+                위 작업을 몇 번이나 반복해야 하는지 반환하는 함수, solution을 완성해 주세요.<br>
+                단, 주어진 수가 1인 경우에는 0을, 작업을 500번 반복할 때까지 1이 되지 않는다면 -1을 반환해 주세요.
+            </p>
+            <hr>
+            <h3 class="t_tit2">🍞 입출력 예</h3>
+            <table class="t_table">
+                <thead>
+                    <tr>
+                        <th class="ce">seoul</th>
+                        <th class="ce">return</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>["Jane", "Kim"]</td>
+                        <td>"김서방은 1에 있다"</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <h3 class="t_tit2">🍞 문제 풀이</h3>
+            <p class="t_desc">
+                while문을 이용해 식을 반복하고 삼항연산자를 사골처럼 우려보았습니다.
+            </p>
+            <div class="t_code">
+<pre><code class="language-js">function solution(num) {
+    var answer = 0;
+    let x = 0
+    while( num!=1 && x&lt;500 ){
+        x++;
+        (num%2 == 0) ? num=num/2 : num=num*3+1;
+    }
+    (x == 500) ? answer = -1 : answer = x ;
+    return answer;
+}
+</code></pre>
+            </div>
+            <hr>
+            <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
+            <p class="t_desc">
+                삼항연산자 안에 삼항 연산자를 쓸 수 있다니… 새로운 걸 알았습니다.
+            </p>
+            <div class="t_code">
+<pre><code class="language-js">const solution = (num) => collatzGuessCount(num, 0);
+
+const collatzGuessCount = (num, acc) => 
+    (num === 1) ? ((acc > 500) ? -1 : acc) : collatzGuessCount(processCollatz(num), acc + 1);
+
+const processCollatz = (num) => (num % 2 === 0) ? (num / 2) : (num * 3 + 1);
+</code></pre>
+            </div>
+            <div class="t_link">
+                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12943">문제 풀어보기</a>
+            </div>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script> hljs.highlightAll();</script>
+</body>
+
+</html>
