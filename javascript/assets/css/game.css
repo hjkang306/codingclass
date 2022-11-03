@@ -121,7 +121,7 @@ body {
 .SourceInner {
     display: none;
     position: absolute;
-    bottom: 100px;
+    top: 500px;
     right: 400px;
     width: 400px;
     padding: 0 10px 10px;

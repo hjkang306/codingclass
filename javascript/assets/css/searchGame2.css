@@ -12,6 +12,7 @@
     top: 250px;
     left: 400px;
     position: relative;
+    user-select: none;
 }
 .search__wrap.show {
     display: block;

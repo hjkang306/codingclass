@@ -12,34 +12,34 @@
   <body>
     <main id="main">
       <div class="document">
-        <h2 class="t_tit">프로그래머스 1단계 - 서울에서 김서방 찾기</h2>
+        <h2 class="t_tit">프로그래머스 1단계 - 핸드폰 번호 가리기</h2>
         <h3 class="t_tit2">🍞 문제 설명</h3>
         <p class="t_desc">
-          String형 배열 seoul의 element중 "Kim"의 위치 x를 찾아, "김서방은 x에
-          있다"는 String을 반환하는 함수, solution을 완성하세요.<br />
-          seoul에 "Kim"은 오직 한 번만 나타나며 잘못된 값이 입력되는 경우는
-          없습니다.
+          프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때 고객들의 전화번호의 일부를 가립니다.<br>
+          전화번호가 문자열 phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 *으로 가린 문자열을 리턴하는 함수, solution을 완성해주세요.
         </p>
         <hr />
         <h3 class="t_tit2">🍞 제한 조건</h3>
         <p class="t_desc2">
-          seoul은 길이 1 이상, 1000 이하인 배열입니다.<br />
-          seoul의 원소는 길이 1 이상, 20 이하인 문자열입니다.<br />
-          "Kim"은 반드시 seoul 안에 포함되어 있습니다.
+          phone_number는 길이 4 이상, 20이하인 문자열입니다.
         </p>
         <hr />
         <h3 class="t_tit2">🍞 입출력 예</h3>
         <table class="t_table">
           <thead>
             <tr>
-              <th class="ce">seoul</th>
+              <th class="ce">phone_number</th>
               <th class="ce">return</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>["Jane", "Kim"]</td>
-              <td>"김서방은 1에 있다"</td>
+              <td>"01033334444"</td>
+              <td>"*******4444"</td>
+            </tr>
+            <tr>
+              <td>"027778888"</td>
+              <td>"*****8888"</td>
             </tr>
           </tbody>
         </table>
