@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../assets/css/music.css" />
         <link rel="stylesheet" href="../assets/css/searchGame2.css" />
         <link rel="stylesheet" href="../assets/css/memory.css" />
+        <link rel="stylesheet" href="../assets/css/tetris.css" />
 
         <!-- <link rel="stylesheet" href="../assets/css/clouds.css" /> -->
     </head>
@@ -38,8 +39,8 @@
                     <span>메모리게임</span>
                 </div>
                 <div class="icon icon4">
-                    <img src="../assets/img/icon3.png" alt="폴더" />
-                    <span>Folder3</span>
+                    <img src="../assets/img/icon3.png" alt="테트리스 게임" />
+                    <span>테트리스</span>
                 </div>
                 <div class="icon icon5">
                     <img src="../assets/img/icon5.png" alt="폴더" />
@@ -573,7 +574,52 @@
                 </div>
             </div>
             <!-- //memory__wrap -->
+
+            <div class="tetris__wrap wrap show">
+                <div class="tetris__inner">
+                    <div class="tetris__title">
+                        <span>T</span>
+                        <span>E</span>
+                        <span>T</span>
+                        <span>R</span>
+                        <span>I</span>
+                        <span>S</span>
+                    </div>
+                    <div class="tetris__start show">
+                        <div class="desc">
+                            <div class="tetris__desc__title">SCORE RULES</div>
+                            <div class="tetris__desc__desc">
+                                버틴시간(초) x 1점<br>
+                                +<br>
+                                삭제한 줄 갯수 x 5점
+                            </div>
+                        </div>
+                        <div class="start__btn">START !</div>
+                    </div>
+                    <div class="tetris__restart">
+                        <div class="desc">GAME OVER</div>
+                        <div class="tetris__total">
+                            <div class="time"><span>0</span> 초</div>
+                            <div class="line"><span>0</span> 줄</div>
+                        </div>
+                        <div class="tetris__score"><span>0</span> 점</div>
+                        <div class="restart__btn">RESTART !</div>
+                    </div>
+                    <div class="tetris__play">
+                        <div class="playground">
+                            <ul></ul>
+                        </div>
+                    </div>
+                    <div class="tetris__info">
+                        <div class="tit">TIME :</div>
+                        <div class="time"><span>0</span> 초</div>
+                        <div class="tit">LINE :</div>
+                        <div class="line"><span>0</span> 줄</div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- //tetris__wrap -->
 
         <!-- 소스 보기 -->
         <div class="SourceInner wrap">
@@ -588,10 +634,10 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-        <!-- <script src="../assets/js/clouds.js"></script> -->
         <script src="../assets/js/music.js"></script>
         <script src="../assets/js/cssGame.js"></script>
         <script src="../assets/js/memory.js"></script>
+        <script src="../assets/js/tetris.js"></script>
         <!-- 커서 -->
         <script>
             // cursor
@@ -613,6 +659,7 @@
             $(".music__wrap").draggable({stack: ".wrap", opacity: 0.8});
             $(".memory__wrap").draggable({stack: ".wrap", opacity: 0.8});
             $(".search__wrap").draggable({stack: ".wrap", opacity: 0.8});
+            $(".tetris__wrap").draggable({stack: ".wrap", opacity: 0.8});
             $(".SourceInner").draggable({stack: ".wrap", opacity: 0.8});
 
             function printTime() {

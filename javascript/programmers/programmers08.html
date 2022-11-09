@@ -69,41 +69,36 @@
             <hr>
             <h3 class="t_tit2">🍞 문제 풀이</h3>
             <p class="t_desc">
-                includes() 메서드로 문자의 포함 여부를 확인하고 match() 메서드와 length로 문자의 갯수를 파악하였습니다.
-                쉽게 하려다가 더 어렵게 해버린 기분이 드네요… 런타임 오류는 p 또는 y가 없거나 둘 다 없는 경우라네요. 주의…
+                자주 우려먹는 split('')와 reduce() 입니다.
             </p>
             <div class="t_code">
-<pre><code class="language-js">function solution(s){
-    let answer = false;
-    
-    if(s.toLowerCase().includes("p") && s.toLowerCase().includes("y")){
-        (s.match(/p/ig).length != s.match(/y/ig).length) ? answer : answer = true;    
-    } else if(!s.toLowerCase().includes("p") && !s.toLowerCase().includes("y")){
-        answer = true;
-    }
-
-    return answer;
+<pre><code class="language-js">function solution(x) {
+    var answer = true;
+    let sum = x.toString().split('').reduce((p,c)=> parseInt(p) + parseInt(c));
+    return ( x % sum === 0) ? answer = true : answer = false;
 }
 </code></pre>
             </div>
             <hr>
             <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
             <p class="t_desc">
-                펼침연산자와 reduce() 메서드, 삼항연산자를 사용하면 이런 방법도 가능하네요.
-                보기엔 복잡하지만 다양하게 활용할 수 있는 방법인 것 같습니다.
+                % 연산자와 내림을 이용한 방법입니다.
             </p>
             <div class="t_code">
-<pre><code class="language-js">function solution(s){
-    return [...s.toLowerCase()].reduce((acc, cur) => {
-        if(cur ==='p') return acc + 1;
-        else if(cur ==='y') return acc - 1;
-        return acc;
-    }, 0) ? false : true;
+<pre><code class="language-js">function solution(x) {
+    let num = x;
+    let sum = 0;
+    do {
+        sum += x%10;
+        x = Math.floor(x/10);
+    } while (x>0);
+
+    return !(num%sum);
 }
 </code></pre>
             </div>
             <div class="t_link">
-                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12916#">문제 풀어보기</a>
+                <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12947">문제 풀어보기</a>
             </div>
         </div>
     </main>

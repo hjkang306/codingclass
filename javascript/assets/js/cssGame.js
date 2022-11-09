@@ -426,6 +426,7 @@ const cssProperty = [ //all, animation, background, flex, grid, string, table
         timeInterval = setInterval(reduceTime, 1000);
 
         //뮤직 추가하기
+        searchAudio.currentTime = 0;
         searchAudio.play();
         searchAudioStop.style.display = "none";
         searchAudioPlay.style.display = "block";
@@ -575,6 +576,7 @@ const cssProperty = [ //all, animation, background, flex, grid, string, table
     
             
             searchAudio.pause();
+            searchAudio.currentTime = 0;
             searchAudioPlay.style.display = "none";
             searchAudioStop.style.display = "block";
             searchTime.innerText = displayTime();

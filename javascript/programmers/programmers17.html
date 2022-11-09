@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - 나누어 떨어지는 숫자 배열</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          array의 각 element 중 divisor로 나누어 떨어지는 값을 오름차순으로 정렬한 배열을 반환하는 함수, solution을 작성해주세요.<br>
+          divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을 담아 반환하세요.
+        </p>
+        <hr />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          arr은 자연수를 담은 배열입니다.<br>
+          정수 i, j에 대해 i ≠ j 이면 arr[i] ≠ arr[j] 입니다.<br>
+          divisor는 자연수입니다.<br>
+          array는 길이 1 이상인 배열입니다.
+        <hr />
+        <h3 class="t_tit2">🍞 입출력 예</h3>
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">arr</th>
+              <th class="ce">divisor</th>
+              <th class="ce">return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>[5, 9, 7, 10]</td>
+              <td>5</td>
+              <td>[5, 10]</td>
+            </tr>
+            <tr>
+              <td>[2, 36, 1, 3]</td>
+              <td>1</td>
+              <td>[1, 2, 3, 36]</td>
+            </tr>
+            <tr>
+              <td>[3,2,6]</td>
+              <td>10</td>
+              <td>[-1]</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="t_code">
+          입출력 예#1<br>
+          arr의 원소 중 5로 나누어 떨어지는 원소는 5와 10입니다. 따라서 [5, 10]을 리턴합니다.<br>
+
+          입출력 예#2<br>
+          arr의 모든 원소는 1으로 나누어 떨어집니다. 원소를 오름차순으로 정렬해 [1, 2, 3, 36]을 리턴합니다.<br><br>
+
+          입출력 예#3<br>
+          3, 2, 6은 10으로 나누어 떨어지지 않습니다. 나누어 떨어지는 원소가 없으므로 [-1]을 리턴합니다.
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">
+          나누어 딱 떨어지는 숫자를 push()로 answer에 넣어주고, sort로 정렬해주었습니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(arr, divisor) {
+  var answer = [];
+  for(x of arr){
+      (x % divisor == 0 ) ? answer.push(x) : null;
+  }
+  if(answer.length == 0) answer.push(-1)
+  return answer.sort((a,b) => a - b);
+}
+</code></pre>
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
+        <p class="t_desc">
+          filter()를 사용하다니 천재인가봅니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(arr, divisor) {
+    var answer = arr.filter(v => v%divisor == 0);
+    return answer.length == 0 ? [-1] : answer.sort((a,b) => a-b);
+}
+</code></pre>
+        </div>
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/12910"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>

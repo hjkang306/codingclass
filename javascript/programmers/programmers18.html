@@ -12,66 +12,69 @@
   <body>
     <main id="main">
       <div class="document">
-        <h2 class="t_tit">프로그래머스 1단계 - 핸드폰 번호 가리기</h2>
+        <h2 class="t_tit">프로그래머스 1단계 - 제일 작은 수 제거하기</h2>
         <h3 class="t_tit2">🍞 문제 설명</h3>
         <p class="t_desc">
-          프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때 고객들의 전화번호의 일부를 가립니다.<br>
-          전화번호가 문자열 phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 *으로 가린 문자열을 리턴하는 함수, solution을 완성해주세요.
+          정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을 리턴하는 함수, solution을 완성해주세요.<br>
+          단, 리턴하려는 배열이 빈 배열인 경우엔 배열에 -1을 채워 리턴하세요.<br>
+          예를들어 arr이 [4,3,2,1]인 경우는 [4,3,2]를 리턴 하고, [10]면 [-1]을 리턴 합니다.
         </p>
         <hr />
         <h3 class="t_tit2">🍞 제한 조건</h3>
         <p class="t_desc2">
-          phone_number는 길이 4 이상, 20이하인 문자열입니다.
-        </p>
+          arr은 길이 1 이상인 배열입니다.<br>
+          인덱스 i, j에 대해 i ≠ j이면 arr[i] ≠ arr[j] 입니다.
         <hr />
         <h3 class="t_tit2">🍞 입출력 예</h3>
         <table class="t_table">
           <thead>
             <tr>
-              <th class="ce">phone_number</th>
+              <th class="ce">arr</th>
               <th class="ce">return</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>"01033334444"</td>
-              <td>"*******4444"</td>
+              <td>[4,3,2,1]</td>
+              <td>[4,3,2]</td>
             </tr>
             <tr>
-              <td>"027778888"</td>
-              <td>"*****8888"</td>
+              <td>[10]</td>
+              <td>[-1]</td>
             </tr>
           </tbody>
         </table>
         <hr />
         <h3 class="t_tit2">🍞 문제 풀이</h3>
         <p class="t_desc">
-          substr()로 뒷자리 숫자 4개를 뽑아내고, padStart를 이용해 나머지 자릿수만큼을 *로 채웠습니다ㅏ.
+          나누어 딱 떨어지는 숫자를 push()로 answer에 넣어주고, sort로 정렬해주었습니다.
         </p>
         <div class="t_code">
-<pre><code class="language-js">function solution(phone_number) {
-    return answer = phone_number.substr(-4).padStart(phone_number.length, "*");
+<pre><code class="language-js">function solution(arr, divisor) {
+  var answer = [];
+  for(x of arr){
+      (x % divisor == 0 ) ? answer.push(x) : null;
+  }
+  if(answer.length == 0) answer.push(-1)
+  return answer.sort((a,b) => a - b);
 }
 </code></pre>
         </div>
         <hr />
         <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
         <p class="t_desc">
-          사용한 메서드는 비슷하지만 Array를 활용했다는 차이가 있습니다.
+          filter()를 사용하다니 천재인가봅니다.
         </p>
         <div class="t_code">
-<pre><code class="language-js">function solution(phone_number) {
-    var answer = '';
-    var hidden = phone_number.length - 4;
-    var show = phone_number.substring(phone_number.length, phone_number.length - 4);
-    answer = Array(hidden+1).join("*") + show;
-    return answer;
+<pre><code class="language-js">function solution(arr, divisor) {
+    var answer = arr.filter(v => v%divisor == 0);
+    return answer.length == 0 ? [-1] : answer.sort((a,b) => a-b);
 }
 </code></pre>
         </div>
         <div class="t_link">
           <a
-            href="https://school.programmers.co.kr/learn/courses/30/lessons/12948"
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/12910"
             >문제 풀어보기</a
           >
         </div>
