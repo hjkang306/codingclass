@@ -11,6 +11,8 @@ const tetrisInfo = tetrisWrap.querySelector(".tetris__info");
 const tetrisIcon2 = document.querySelector(".icon4");
 const tetrisCloseBtn = document.querySelector(".tetris__close__btn");
 let tetrisMusic = new Audio("../assets/audio/RetroGamer.mp3");
+let tetrisMatchMusic = new Audio("../assets/audio/match2.mp3");
+let tetrisEndMusic = new Audio("../assets/audio/up.mp3");
 
 // variables
 let rows = 20;
@@ -329,6 +331,7 @@ function checkMatch() {
   childNodes[0].children[0].childNodes.forEach((li) => {
     if (li.classList.contains("seized")) {
       stopTetris = true;
+      tetrisEndMusic.play();
       tetrisGameover();
     }
   });
@@ -346,6 +349,7 @@ function checkMatch() {
 
     // match가 true인 경우, 꽉 채운 해당 줄을 삭제하고, 새로 한 줄을 추가합니다.
     if (matched) {
+      tetrisMatchMusic.play();
       child.remove(); // 줄 삭제
       prependNewLine(); // 줄 생성
       tetrisScore++;
