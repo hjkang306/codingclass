@@ -9,6 +9,22 @@
     display: block;
 }
 .tetris__inner {}
+.tetris__close__btn {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    position: absolute;
+    top: 50px;
+    right: -60px;
+    padding: 8px 8px 10px 10px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    transform: scaleX(1.4);
+}
+.tetris__close__btn:hover {
+    background: rgba(81, 0, 173, 0.747);
+    text-shadow: 0 0 0.2rem rgb(255, 255, 255);
+}
 .tetris__title {
     color: #fff;
     font-size: 30px;

@@ -575,8 +575,9 @@
             </div>
             <!-- //memory__wrap -->
 
-            <div class="tetris__wrap wrap show">
+            <div class="tetris__wrap wrap">
                 <div class="tetris__inner">
+                    <div class="tetris__close__btn"><span>X</span></div>
                     <div class="tetris__title">
                         <span>T</span>
                         <span>E</span>
@@ -796,6 +797,17 @@
             });
             memoryClose.addEventListener("click", () => {
                 memoryWrap1.classList.remove("show");
+            });
+
+            // 테트리스게임
+            const tetrisIcon = document.querySelector(".icon4");
+            const tetrisWrap1 = document.querySelector(".tetris__wrap");
+            const tetrisClose = document.querySelector(".tetris__close__btn");
+            tetrisIcon.addEventListener("click", () => {
+                tetrisWrap1.classList.toggle("show");
+            });
+            tetrisClose.addEventListener("click", () => {
+                tetrisWrap1.classList.remove("show");
             });
         </script>
     </body>
