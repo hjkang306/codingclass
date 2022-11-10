@@ -35,6 +35,28 @@
     margin-bottom: 10px;
     text-shadow: 0 0 0.5rem rgb(138, 36, 255);
 }
+.neonImg06 {
+    width: 100px;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: rotate(10deg);
+    z-index: -1;
+}
+.neonImg07 {
+    width: 100px;
+    position: absolute;
+    top: -50px;
+    left: 40%;
+    z-index: -2;
+}
+.neonImg08 {
+    width: 100px;
+    position: absolute;
+    top: -10px;
+    left: 25%;
+    z-index: -2;
+}
 .tetris__start {
     display: none;
     width: 300px;
@@ -79,6 +101,21 @@
     background: rgba(81, 0, 173, 0.747);
     text-shadow: 0 0 0.2rem rgb(255, 255, 255);
 }
+.tem__btn {
+    position: absolute;
+    top: -70px;
+    left: -110px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: right;
+}
+.tem__btn > div {
+    margin: 5px 0;
+}
+.tem__btn .tem01:hover {color:red;}
+.tem__btn .tem02:hover {color: gray;}
+.tem__btn .tem03:hover {color: rgb(255, 152, 233);}
 
 .tetris__restart {
     display: none;
@@ -182,6 +219,39 @@
     width: 100px;
 }
 /* playground */
+.neonImg01 {
+    width: 100px;
+    position: absolute;
+    bottom: 30px;
+    left: -50px;
+    z-index: 1;
+}
+.neonImg02 {
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    right: -50px;
+    z-index: 1;
+}
+.neonImg03 {
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    right: -50px;
+}
+.neonImg04 {
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    left: -80px;
+    z-index: 1;
+}
+.neonImg05 {
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    left: -70px;
+}
 .playground {
     border: 3px ridge #fff;
 }
@@ -199,30 +269,30 @@
     border: 1px dashed rgb(149, 135, 170);
 }
 .Tmino {
-    border: 6px #a042a2 outset !important;
+    border: 6px #19005285 outset !important;
     background-color: #952d98;
 }
 .Lmino {
-    border: 6px #ff861a outset !important;
+    border: 6px #19005285 outset !important;
     background-color: #ff7900;
 }
 .Jmino {
-    border: 6px #1a74c4 outset !important;
+    border: 6px #19005285 outset !important;
     background-color: #0065bd;
 }
 .Zmino {
-    border: 6px #ef3e4d outset !important;
+    border: 6px #19005285 outset !important;
     background-color: #ed2939;
 }
 .Smino {
-    border: 6px #78c53e outset !important;
+    border: 6px #19005285 outset !important;
     background-color: #69be28;
 }
 .Omino {
-    border: 6px #fed01a outset !important;
+    border: 6px #19005285 outset !important;
     background-color: #fecb00;
 }
 .Imino {
-    border: 6px #1aa9de outset !important;
+    border: 6px #19005285 outset !important;
     background-color: #009fda;
 }

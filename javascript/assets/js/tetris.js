@@ -521,5 +521,15 @@ tetrisCloseBtn.addEventListener("click", () => {
   tetrisStart.classList.add("show");
 });
 
+// 테마 바꾸기
+// const temBtn01 = document.querySelector(".tem01");
+// const temBtn02 = document.querySelector(".tem02");
+// const temBtn03 = document.querySelector(".tem03");
+
+// temBtn01.addEventListener("click", () => {
+  // alert("aaa")
+  // document.querySelector(".Tmino").style.border = "6px #19005285 outset !important";
+// });
+
 // 테트리스 만들기
 init();

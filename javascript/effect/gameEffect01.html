@@ -579,6 +579,9 @@
                 <div class="tetris__inner">
                     <div class="tetris__close__btn"><span>X</span></div>
                     <div class="tetris__title">
+                        <img class="neonImg06" src="../assets/img/neonPlant06.png" alt="네온 식물 이미지">
+                        <img class="neonImg07" src="../assets/img/neonPlant07.png" alt="네온 식물 이미지2">
+                        <img class="neonImg08" src="../assets/img/neonPlant08.png" alt="네온 식물 이미지3">
                         <span>T</span>
                         <span>E</span>
                         <span>T</span>
@@ -602,6 +605,11 @@
                             </div>
                         </div>
                         <div class="start__btn">START !</div>
+                        <!-- <div class="tem__btn">
+                            <div class="tem01">ORIGINAL</div>
+                            <div class="tem02">GRAY</div>
+                            <div class="tem03">PASTEL</div>
+                        </div> -->
                     </div>
                     <div class="tetris__restart">
                         <img src="../assets/img/neonBird.gif" alt="춤추는 앵무새 움직이는 이미지">
@@ -614,6 +622,11 @@
                         <div class="restart__btn">RESTART !</div>
                     </div>
                     <div class="tetris__play">
+                        <img class="neonImg01" src="../assets/img/neonPlant01.png" alt="네온 식물 이미지1">
+                        <img class="neonImg02" src="../assets/img/neonPlant02.png" alt="네온 식물 이미지2">
+                        <img class="neonImg03" src="../assets/img/neonPlant03.png" alt="네온 식물 이미지3">
+                        <img class="neonImg04" src="../assets/img/neonPlant04.png" alt="네온 식물 이미지4">
+                        <img class="neonImg05" src="../assets/img/neonPlant05.png" alt="네온 식물 이미지5">
                         <div class="playground">
                             <ul></ul>
                         </div>
@@ -815,9 +828,11 @@
             const tetrisClose = document.querySelector(".tetris__close__btn");
             tetrisIcon.addEventListener("click", () => {
                 tetrisWrap1.classList.toggle("show");
+                document.querySelector(".tetris__gif").classList.remove("show");
             });
             tetrisClose.addEventListener("click", () => {
                 tetrisWrap1.classList.remove("show");
+                document.querySelector(".tetris__gif").classList.remove("show");
             });
         </script>
 
