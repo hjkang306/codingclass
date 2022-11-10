@@ -604,6 +604,7 @@
                         <div class="start__btn">START !</div>
                     </div>
                     <div class="tetris__restart">
+                        <img src="../assets/img/neonBird.gif" alt="춤추는 앵무새 움직이는 이미지">
                         <div class="desc">GAME OVER</div>
                         <div class="tetris__total">
                             <div class="time"><span>0</span> 초</div>
@@ -622,6 +623,9 @@
                         <div class="time"><span>0</span> 초</div>
                         <div class="tit">LINE :</div>
                         <div class="line"><span>0</span> 줄</div>
+                    </div>
+                    <div class="tetris__gif">
+                        <img src="../assets/img/dance.gif" alt="춤추는 사람의 움직이는 이미지">
                     </div>
                 </div>
             </div>
@@ -815,6 +819,20 @@
             tetrisClose.addEventListener("click", () => {
                 tetrisWrap1.classList.remove("show");
             });
+        </script>
+
+        <!-- z-index -->
+        <script>
+            const icons2 = document.querySelectorAll(".icon");
+            const wraps = document.querySelectorAll(".wrap");
+            icons2.forEach((el, i)=>{
+                el.addEventListener("click", ()=>{
+                    wraps.forEach((e)=>{
+                        e.classList.remove("zIndex");
+                        wraps[i].classList.add("zIndex");
+                    })
+                })
+            })
         </script>
     </body>
 </html>

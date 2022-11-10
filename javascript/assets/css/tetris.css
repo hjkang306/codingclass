@@ -98,6 +98,13 @@
 .tetris__restart.show {
     display: block;
 }
+.tetris__restart img {
+    width: 100px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .tetris__restart .desc {
     font-weight: 900;
     margin-bottom: 10px;
@@ -161,7 +168,19 @@
     margin-bottom: 10px;
 }
 .tetris__info .line {}
-
+.tetris__gif {
+    display: none;
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    right: -100px;
+}
+.tetris__gif.show {
+    display: block;
+}
+.tetris__gif img {
+    width: 100px;
+}
 /* playground */
 .playground {
     border: 3px ridge #fff;

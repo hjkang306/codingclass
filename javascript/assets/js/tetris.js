@@ -10,6 +10,7 @@ const resultScore = tetrisWrap.querySelector(".tetris__score span");
 const tetrisInfo = tetrisWrap.querySelector(".tetris__info");
 const tetrisIcon2 = document.querySelector(".icon4");
 const tetrisCloseBtn = document.querySelector(".tetris__close__btn");
+const tetrisGif = document.querySelector(".tetris__gif");
 let tetrisMusic = new Audio("../assets/audio/RetroGamer.mp3");
 let tetrisMatchMusic = new Audio("../assets/audio/match2.mp3");
 let tetrisEndMusic = new Audio("../assets/audio/up.mp3");
@@ -437,6 +438,7 @@ function tetrisGameover() {
   tetrisMusic.currentTime = 0;
   clearInterval(setTetrisTime);
   tetrisInfo.classList.remove("show");
+  tetrisGif.classList.remove("show");
   tetrisRestart.classList.add("show");
   resultTime.innerText = tetrisTime;
   resultLine.innerText = tetrisScore;
@@ -448,6 +450,7 @@ function tetrisStartFunc() {
   stopTetris = false;
   tetrisStart.classList.remove("show");
   tetrisInfo.classList.add("show");
+  tetrisGif.classList.add("show");
   document.querySelector(".tetris__restart").classList.remove("show");
   generateNewBlock();
   setTime();
@@ -511,12 +514,12 @@ tetrisIcon2.addEventListener("click", () => {
   resetTetris();
   tetrisRestart.classList.remove("show");
   tetrisStart.classList.add("show");
-})
+});
 tetrisCloseBtn.addEventListener("click", () => {
   resetTetris();
   tetrisRestart.classList.remove("show");
   tetrisStart.classList.add("show");
-})
+});
 
 // 테트리스 만들기
 init();
