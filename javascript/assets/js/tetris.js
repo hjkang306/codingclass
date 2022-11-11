@@ -26,6 +26,7 @@ let tempMovingItem;
 let tetrisTime = 0;
 let stopTetris = false;
 let setTetrisTime;
+let celectT;
 
 // 블록 정보
 const movingItem = {
@@ -245,6 +246,10 @@ function prependNewLine() {
   }
   li.prepend(ul);
   playground.prepend(li);
+  const tetrisMinos = playground.querySelectorAll("li > ul > li");
+  tetrisMinos.forEach((minos) => {
+    minos.classList.add(`${celectT}`);
+  });
 }
 
 // 블록 출력하기
@@ -354,8 +359,8 @@ function checkMatch() {
       child.remove(); // 줄 삭제
       prependNewLine(); // 줄 생성
       tetrisScore++;
-      document.querySelector(".tetris__info .line span").innerText =
-        tetrisScore;
+      document.querySelector(".tetris__info .line span").innerText = tetrisScore;
+      duration > 200 ? duration = duration - 20 : duration;
     }
   });
 
@@ -437,6 +442,7 @@ function tetrisGameover() {
   tetrisMusic.pause();
   tetrisMusic.currentTime = 0;
   clearInterval(setTetrisTime);
+  duration = 500;
   tetrisInfo.classList.remove("show");
   tetrisGif.classList.remove("show");
   tetrisRestart.classList.add("show");
@@ -467,10 +473,12 @@ function resetTetris() {
   tetrisScore = 0;
   tetrisTime = 0;
   stopTetris = true;
+  duration = 500;
   document.querySelector(".tetris__info .time span").innerText = tetrisTime;
 
   const tetrisMinos = playground.querySelectorAll("li > ul > li");
   tetrisMinos.forEach((minos) => {
+    // minos.className = "original";
     minos.className = "";
   });
 }
@@ -521,15 +529,38 @@ tetrisCloseBtn.addEventListener("click", () => {
   tetrisStart.classList.add("show");
 });
 
-// 테마 바꾸기
-// const temBtn01 = document.querySelector(".tem01");
-// const temBtn02 = document.querySelector(".tem02");
-// const temBtn03 = document.querySelector(".tem03");
+//테마 바꾸기
+const temBtn01 = document.querySelector(".tem01");
+const temBtn02 = document.querySelector(".tem02");
+const temBtn03 = document.querySelector(".tem03");
 
-// temBtn01.addEventListener("click", () => {
-  // alert("aaa")
-  // document.querySelector(".Tmino").style.border = "6px #19005285 outset !important";
-// });
+temBtn01.addEventListener("click", () => {
+  const tetrisMinos = playground.querySelectorAll("li > ul > li");
+  tetrisMinos.forEach((minos) => {
+    minos.classList.remove("pastel");
+    minos.classList.remove("gray");
+    minos.classList.add("original");
+  });
+  celectT = "original";
+});
+temBtn02.addEventListener("click", () => {
+  const tetrisMinos = playground.querySelectorAll("li > ul > li");
+  tetrisMinos.forEach((minos) => {
+    minos.classList.remove("pastel");
+    minos.classList.add("gray");
+    minos.classList.remove("original");
+  });
+  celectT = "gray";
+});
+temBtn03.addEventListener("click", () => {
+  const tetrisMinos = playground.querySelectorAll("li > ul > li");
+  tetrisMinos.forEach((minos) => {
+    minos.classList.add("pastel");
+    minos.classList.remove("gray");
+    minos.classList.remove("original");
+  });
+  celectT = "pastel";
+});
 
 // 테트리스 만들기
 init();

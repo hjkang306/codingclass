@@ -1,0 +1,31 @@
+#footer {
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    background: #ddd;
+    padding: 0 10px;
+}
+.footer__logo {
+}
+.footer__logo a {
+    font-size: 40px;
+    font-weight: 700;
+    color: #666;
+}
+.copy {
+    font-size: 24px;
+}
+.share {
+    display: flex;
+}
+.share > div {
+    width: 70px;
+    height: 70px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.share > div img {
+    width: 100%;
+}

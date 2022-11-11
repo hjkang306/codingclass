@@ -268,6 +268,7 @@
     height: 30px;
     border: 1px dashed rgb(149, 135, 170);
 }
+/*  */
 .Tmino {
     border: 6px #19005285 outset !important;
     background-color: #952d98;
@@ -295,4 +296,91 @@
 .Imino {
     border: 6px #19005285 outset !important;
     background-color: #009fda;
+}
+/* original */
+.original.Tmino {
+    border: 6px #19005285 outset !important;
+    background-color: #952d98;
+}
+.original.Lmino {
+    border: 6px #19005285 outset !important;
+    background-color: #ff7900;
+}
+.original.Jmino {
+    border: 6px #19005285 outset !important;
+    background-color: #0065bd;
+}
+.original.Zmino {
+    border: 6px #19005285 outset !important;
+    background-color: #ed2939;
+}
+.original.Smino {
+    border: 6px #19005285 outset !important;
+    background-color: #69be28;
+}
+.original.Omino {
+    border: 6px #19005285 outset !important;
+    background-color: #fecb00;
+}
+.original.Imino {
+    border: 6px #19005285 outset !important;
+    background-color: #009fda;
+}
+/* gray */
+.gray.Tmino {
+    border: 6px #19005285 outset !important;
+    background-color: #636363;
+}
+.gray.Lmino {
+    border: 6px #19005285 outset !important;
+    background-color: #f0f0f0;
+}
+.gray.Jmino {
+    border: 6px #19005285 outset !important;
+    background-color: #cecece;
+}
+.gray.Zmino {
+    border: 6px #19005285 outset !important;
+    background-color: #949494;
+}
+.gray.Smino {
+    border: 6px #19005285 outset !important;
+    background-color: #2e2e2e;
+}
+.gray.Omino {
+    border: 6px #19005285 outset !important;
+    background-color: #4e4e4e;
+}
+.gray.Imino {
+    border: 6px #19005285 outset !important;
+    background-color: #929292;
+}
+/* pastel */
+.pastel.Tmino {
+    border: 6px #19005285 outset !important;
+    background-color: #fc98ff;
+}
+.pastel.Lmino {
+    border: 6px #19005285 outset !important;
+    background-color: #ffcca0;
+}
+.pastel.Jmino {
+    border: 6px #19005285 outset !important;
+    background-color: #94cdff;
+}
+.pastel.Zmino {
+    border: 6px #19005285 outset !important;
+    background-color: #ffb0b5;
+}
+.pastel.Smino {
+    border: 6px #19005285 outset !important;
+    background-color: #c6ff9a;
+}
+.pastel.Omino {
+    border: 6px #19005285 outset !important;
+    background-color: #fffd8e;
+}
+.pastel.Imino {
+    border: 6px #19005285 outset !important;
+    background-color: #caaeff;
 }

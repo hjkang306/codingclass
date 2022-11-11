@@ -1,0 +1,146 @@
+#contents {
+    height: 240px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.notice__wrap {
+    width: 34%;
+}
+.banner__wrap {
+    width: 33%;
+    position: relative;
+}
+.image__wrap {
+    width: 33%;
+    position: relative;
+}
+/* .notice__wrap */
+.notice__title {
+    display: flex;
+}
+.notice__title h3 {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.notice__title h3.active {
+    background: rgb(243, 222, 222);
+}
+.notice__wrap > ul {
+    display: none;
+    padding: 15px 10px;
+}
+.notice__wrap > ul.active {
+    display: block;
+    background: rgb(243, 222, 222);
+}
+.notice {}
+.notice li {
+    margin: 10px 0;
+    position: relative;
+}
+.notice li a {
+    display: inline-block;
+    width: 65%;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.notice li:hover a,
+.notice li:hover a::after {
+    text-decoration: underline;
+}
+.notice li a::after {
+    content: '공지사항날짜';
+    position: absolute;
+    right: 0;
+}
+.gallary {
+    display: flex;
+    justify-content: space-between;
+}
+.gallary li {
+    display: inline-block;
+    width: 30%;
+    margin: 1%;
+}
+.gallary li img {
+    width: 100%;
+}
+/* banner__wrap */
+.banner {
+    cursor: pointer;
+}
+.banner img {
+    width: 100%;
+    object-fit: cover;
+}
+.banner::before {
+    content: '배너';
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+/* image__wrap */
+.image {}
+.image img {
+    width: 100%;
+    object-fit: cover;
+}
+.image::before {
+    content: '바로가기';
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
+/* popup */
+.popup {
+    display: none;
+    width: 500px;
+    height: 300px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-sizing: border-box;
+}
+.popup.show {
+    display: block;
+}
+.popup .close {
+    font-size: 40px;
+    text-align: right;
+    margin-top: -30px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-bottom: 50px;
+}
+.popup .close span:hover {
+    color: red;
+}
+.popup p {
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.4;
+}
