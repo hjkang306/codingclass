@@ -12,75 +12,61 @@
   <body>
     <main id="main">
       <div class="document">
-        <h2 class="t_tit">프로그래머스 1단계 - 제일 작은 수 제거하기</h2>
+        <h2 class="t_tit">프로그래머스 1단계 - 가운데 글자 가져오기</h2>
         <h3 class="t_tit2">🍞 문제 설명</h3>
         <p class="t_desc">
-          정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을 리턴하는 함수, solution을 완성해주세요.<br>
-          단, 리턴하려는 배열이 빈 배열인 경우엔 배열에 -1을 채워 리턴하세요.<br>
-          예를들어 arr이 [4,3,2,1]인 경우는 [4,3,2]를 리턴 하고, [10]면 [-1]을 리턴 합니다.
+          단어 s의 가운데 글자를 반환하는 함수, solution을 만들어 보세요.<br>
+          단어의 길이가 짝수라면 가운데 두글자를 반환하면 됩니다.
         </p>
         <hr />
         <h3 class="t_tit2">🍞 제한 조건</h3>
         <p class="t_desc2">
-          arr은 길이 1 이상인 배열입니다.<br>
-          인덱스 i, j에 대해 i ≠ j이면 arr[i] ≠ arr[j] 입니다.
+          s는 길이가 1 이상, 100이하인 스트링입니다.
         <hr />
         <h3 class="t_tit2">🍞 입출력 예</h3>
         <table class="t_table">
           <thead>
             <tr>
-              <th class="ce">arr</th>
+              <th class="ce">s</th>
               <th class="ce">return</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>[4,3,2,1]</td>
-              <td>[4,3,2]</td>
+              <td>"abcde"</td>
+              <td>"c"</td>
             </tr>
             <tr>
-              <td>[10]</td>
-              <td>[-1]</td>
+              <td>"qwer"</td>
+              <td>"we"</td>
             </tr>
           </tbody>
         </table>
         <hr />
         <h3 class="t_tit2">🍞 문제 풀이</h3>
         <p class="t_desc">
-          이번 문제는 어떻게 해야 할지 감이 안잡혀서 많이 헤맨 것 같습니다. for in문으로 가장 작은 수를 찾고,
-          해당하는 수를 splice로 배열에서 잘라냈습니다.
+          length를 통해 문자열의 길이를 확인하고 substr로 홀수면 가운데 글자 하나, 짝수면 가운데 두글자를 return하도록 하였습니다.
         </p>
         <div class="t_code">
-<pre><code class="language-js">function solution(arr) {
-  let num = 0;
-  if(arr.length == 1){
-      arr = [-1];
-  } else {
-      for( x in arr){
-          arr[num] > arr[x] ? num = x : num;
-      }
-      arr.splice(num, 1)
-  }
-  return arr;
+<pre><code class="language-js">function solution(s) {
+  return s.split('').length % 2 == 0 ? s.substr(s.split('').length/2 - 1, 2) : s.substr(s.split('').length/2, 1);
 }
 </code></pre>
         </div>
         <hr />
         <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
         <p class="t_desc">
-          Math.min()을 쓰면 이렇게 간단한 것을…
+          비슷하지만 Math를 활용한 풀이입니다. 그리고 문자열에도 바로 length를 쓸 수 있었네요…
         </p>
         <div class="t_code">
-<pre><code class="language-js">function solution(arr) {
-  arr.splice(arr.indexOf(Math.min(...arr)),1);
-  if(arr.length&lt;1)return[-1];
-  return arr;
+<pre><code class="language-js">function solution(s) {
+    return s.substr(Math.ceil(s.length / 2) - 1, s.length % 2 === 0 ? 2 : 1);
 }
 </code></pre>
         </div>
         <div class="t_link">
           <a
-            href="https://school.programmers.co.kr/learn/courses/30/lessons/12935#"
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/12903"
             >문제 풀어보기</a
           >
         </div>
