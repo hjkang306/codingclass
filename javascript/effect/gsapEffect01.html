@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #contents > section {
+        min-height: 100vh;
+      }
+      .panel {
+        height: 100vh;
+        background-color: beige;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(74, 0, 172);
+      }
+      .box-red {
+        background-color: red;
+      }
+      nav {
+        position: sticky;
+        top: 0;
+        transition: all 600ms ease-in-out;
+        background-color: tan;
+        color: #000;
+        text-align: center;
+      }
+      li {
+        padding: 10px;
+        display: inline-block;
+      }
+      .not-active {
+        background: #fff;
+        color: #6a11cb;
+      }
+
+      /* #section1 {
+        background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+      }
+      #section2 {
+        background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);
+      }
+      #section3 {
+        background-image: linear-gradient(to top, #e9defa 0%, #fbfcdb 100%);
+      }
+      #section4 {
+        background-image: linear-gradient(
+          to top,
+          #3f51b1 0%,
+          #5a55ae 13%,
+          #7b5fac 25%,
+          #8f6aae 38%,
+          #a86aa4 50%,
+          #cc6b8e 62%,
+          #f18271 75%,
+          #f3a469 87%,
+          #f7c978 100%
+        );
+      }
+      #section5 {
+        background-image: linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);
+      }
+      #section6 {
+        background-image: linear-gradient(to top, #16a085 0%, #f4d03f 100%);
+      }
+      .square1 {
+        width: 100px;
+        height: 100px;
+        background-image: linear-gradient(
+          to right,
+          #3ab5b0 0%,
+          #3d99be 31%,
+          #56317a 100%
+        );
+      }
+      .square1.red {
+        background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+      }
+      .square2 {
+        width: 100px;
+        height: 100px;
+        background-image: linear-gradient(-225deg, #20e2d7 0%, #f9fea5 100%);
+      } */
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>about</li>
+        <li>work</li>
+        <li>contact</li>
+      </ul>
+    </nav>
+    <div class="panel">
+      Easing is the primary way to change the timing of your tweens. Simply
+      changing the ease can often times change the entire nature of your
+      animation. But because there are infinite eases that you can use in GSAP,
+      we created the visualizer below to help you choose exactly the type of
+      easing that you need. You can also just copy the ease (or entire tween).
+    </div>
+    <!-- <div class="box"></div>
+    <div class="panel"></div> -->
+
+    <!-- gsap 3.대 버전과 스크롤 트리거(무료버전)을 연동 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script>
+      // 스크롤이 움직이는 이벤트(트리거)를 감지
+      gsap.registerPlugin(ScrollTrigger);
+
+      ScrollTrigger.create({
+        trigger: ".pannel",
+        start: "top 6%",
+        markers: true,
+        toggleClass: { targets: "nav", className: "not-active" },
+        onEnter: () => console.log(onEnter),
+        onLeave: () => console.log(onLeave),
+        onEnterBack: () => console.log(onEnterBack),
+        onLeaveBack: () => console.log(onLeaveBack),
+      });
+    </script>
+
+    <!-- gsap 애니메이션 활용법 -->
+    <script>
+      //   // 애니메이션을 작성 기본
+      //   gsap.to(".square", {
+      //     // 요소의 위치
+      //     x: 1000,
+      //     // 애니메이션의 작동 시간
+      //     duration: 3,
+      //     // 스크롤이 일어나면 어떤걸 할지 작성
+      //     scrub : 4,
+      //     // 스크롤 할 때마다 움직이는 효과를 줌. 숫자 or true 작성. 숫자로 조절하면 더 부드러워짐
+      //     pin: ".square1",
+      //     // 일정 스크롤 후 고정
+      //     pinSpacing: true,
+      //     // 스크롤 하다가 요소를 만나면 넘어갈지 말지. false: 넘어감, true: 안넘어가고 걸림
+      //     scrollTrigger: {
+      //       // 기준이 되는 요소
+      //       trigger: ".square",
+      //       // 시작점 top : start의 위치(top or bottom), 50% : scroll-start의 위치
+      //       start: "top 50%",
+      //       //  끝나는 점 : start와 같음.
+      //       end: () => `+=${document.querySelector(".square").offsetHeight}`,
+      //       // start와 end 마커의 보임을 설정
+      //       markers: true,
+      //       // 스크롤이 닿으면 클래스를 토글해줌
+      //       toggleClass: "red",
+      //       toggleActions: "restart pause resume reset",
+      //       // onEnter, onLeave, onEnterBack, onLeaveBack,
+      //       // play, pause, resume, reset, restart, complete, revers, none
+      //     },
+      //   });
+
+      // 타임라인 활용1
+      //   gsap.to(".square1", {
+      //     // x: 1000,
+      //     duration: 3,
+      //     scrollTrigger: {
+      //       trigger: ".square1",
+      //       start: "top 50%",
+      //       end: "top 30%",
+      //       markers: {
+      //         startColor: "purple",
+      //         endColor: "orange",
+      //         fontSize: "30px",
+      //       },
+      //       toggleClass: "red",
+      //       toggleActions: "restart none none none",
+      //       pin: ".square1",
+      //       pinSpacing: true,
+      //     },
+      //   });
+
+      //   gsap.to(".square1", {x: 1000, duration: 2, rotation: 100, borderRadius: 0})
+      //   gsap.to(".square1", {y: 500, duration: 2, rotation: 0, width: "100px", borderRadius: "20px", delay: 2,})
+      //   gsap.to(".square1", {x: 0, duration: 2, rotation: 300, width: "300px", delay: 4,})
+      //   gsap.to(".square1", {y: 0, duration: 2, rotation: 0, width: "100px", delay: 6,})
+
+      // 타임라인을 만들어주면 딜레이를 주지 않아도 순서대로 실행해 준다.
+      //   const tl = gsap.timeline({repeat: 2, yoyo: true});    // repeat : 반복 수, yoyo : 되돌아가기
+      //   tl.to(".square1", {x: 1000, duration: 2, rotation: 180, borderRadius: 0, ease: "elastic",}) // ease: "elastic" : 바운스 효과(급발진 주의)
+      //   .to(".square1", {y: 500, duration: 2, rotation: 0, width: "100px", borderRadius: "20px", ease: "elastic",}, "+=1")  //"+=3" : 타임라인에서는 이런 식으로 애니메이션 간의 딜레이를 줄 수 있다.
+      //   .to(".square1", {x: 0, duration: 2, rotation: 360, width: "300px", ease: "elastic",})
+      //   .to(".square1", {y: 0, duration: 2, rotation: 0, width: "100px", ease: "elastic",})
+
+      // 타임라인 활용2
+      // const tl = gsap.timeline({
+      //     scrollTrigger : {
+      //         trigger: ".square",
+      //         markers: true,
+      //         start: "top 80%",
+      //         end: "top 30%",
+      //         scrub : 4,
+      //     }
+      // })
+      // tl.to(".square1", {x: 1000, duration: 2, rotation: 180, borderRadius: 0, ease: "bounce.out",}) // ease: "bounce.out" : 바운스 효과
+      // .to(".square1", {y: 500, duration: 2, rotation: 0, width: "100px", borderRadius: "20px", ease: "bounce.out",}, "+=1")  //"+=3" : 타임라인에서는 이런 식으로 애니메이션 간의 딜레이를 줄 수 있다.
+      // .to(".square1", {x: 0, duration: 2, rotation: 360, width: "300px", ease: "bounce.out",})
+      // .to(".square1", {y: 0, duration: 2, rotation: 0, width: "100px", ease: "bounce.out",})
+    </script>
+  </body>
+</html>
