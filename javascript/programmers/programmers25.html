@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - 문자열 다루기 기본</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는 함수, solution을 완성하세요.<br>
+          예를 들어 s가 "a234"이면 False를 리턴하고 "1234"라면 True를 리턴하면 됩니다.
+        </p>
+        <hr />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          s는 길이 1 이상, 길이 8 이하인 문자열입니다.<br>
+          s는 영문 알파벳 대소문자 또는 0부터 9까지 숫자로 이루어져 있습니다.
+        </p>
+
+        <hr />
+        <h3 class="t_tit2">🍞 입출력 예</h3>
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">s</th>
+              <th class="ce">return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"a234"</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>"1234"</td>
+              <td>true</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">search()와 정규식을 통해 문자열의 포함 여부를 확인하였습니다.</p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(s) {
+  return (s.length == 4 || s.length == 6) ? (s.search(/[a-z]/ig) == -1 ? answer = true : answer = false) : answer = false;
+}
+</code></pre>
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
+        <p class="t_desc">Number()와 isNaN()을 사용하여 숫자임을 감별했을 때, NaN이 나오면 false를 리턴하도록 한 풀이법입니다.</p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(s) {
+    if(s.length != 4 && s.length != 6) return false;
+    for(var i = 0; i &lt; s.length; i++) {
+        if(isNaN(Number(s[i]))) return false;
+    }
+    return true;
+}
+</code></pre>
+        </div>
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/12918#"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
