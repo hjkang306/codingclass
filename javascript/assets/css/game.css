@@ -84,8 +84,7 @@ body {
     top: 670px;
 }
 .icon6 {
-    top: auto;
-    bottom: 200px;
+    top: 700px;
     left: auto;
     right: 200px;
 }
@@ -255,5 +254,5 @@ body {
 }
 /* zIndex */
 .zIndex {
-    z-index: 15;
+    z-index: 1000;
 }

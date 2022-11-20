@@ -843,8 +843,10 @@
             icons2.forEach((el, i)=>{
                 el.addEventListener("click", ()=>{
                     wraps.forEach((e)=>{
-                        e.classList.remove("zIndex");
-                        wraps[i].classList.add("zIndex");
+                        // e.classList.remove("zIndex");
+                        // wraps[i].classList.add("zIndex");
+                        e.style.zIndex= 0;
+                        wraps[i].style.zIndex = icons2.length;
                     })
                 })
             })

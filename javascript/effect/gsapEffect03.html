@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .horizontalWrap {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .horizontalSection {
+        overscroll-behavior: none;
+        width: 500%;
+        display: flex;
+        flex-wrap: nowrap;
+      }
+      .section {
+        width: 100%;
+        height: 100vh;
+      }
+      .section:first-child {
+        background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+      }
+      .section:nth-child(2) {
+        background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+      }
+      .section:nth-child(3) {
+        background-image: linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);
+      }
+      .section:nth-child(4) {
+        background-image: linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%);
+      }
+      .section:nth-child(5) {
+        background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontalWrap">
+      <div class="horizontalSection">
+        <section class="section section1"></section>
+        <section class="section section2"></section>
+        <section class="section section3"></section>
+        <section class="section section4"></section>
+        <section class="section section5"></section>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      const sections = gsap.utils.toArray(".section");
+
+      gsap.to(sections, {
+        xPercent: -100 * (sections.length -1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".horizontalWrap",
+          pin: true,
+          scrub: 1,
+          end: "+=4000",
+          markers: true,
+        }
+      })
+    </script>
+  </body>
+</html>
