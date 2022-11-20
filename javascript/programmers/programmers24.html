@@ -12,77 +12,55 @@
   <body>
     <main id="main">
       <div class="document">
-        <h2 class="t_tit">프로그래머스 1단계 - 내적</h2>
+        <h2 class="t_tit">프로그래머스 1단계 - 문자열 내림차순으로 배치하기</h2>
         <h3 class="t_tit2">🍞 문제 설명</h3>
         <p class="t_desc">
-          길이가 같은 두 1차원 정수 배열 a, b가 매개변수로 주어집니다.<br>
-          a와 b의 내적을 return 하도록 solution 함수를 완성해주세요.<br>
-          이때, a와 b의 내적은 a[0]*b[0] + a[1]*b[1] + ... + a[n-1]*b[n-1] 입니다. (n은 a, b의 길이)
+          문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요.<br>
+          s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
         </p>
         <hr />
         <h3 class="t_tit2">🍞 제한 조건</h3>
         <p class="t_desc2">
-          a, b의 길이는 1 이상 1,000 이하입니다.<br>
-          a, b의 모든 수는 -1,000 이상 1,000 이하입니다.
+          str은 길이 1 이상인 문자열입니다.
+        </p>
+
         <hr />
         <h3 class="t_tit2">🍞 입출력 예</h3>
         <table class="t_table">
           <thead>
             <tr>
-              <th class="ce">a</th>
-              <th class="ce">b</th>
-              <th class="ce">result</th>
+              <th class="ce">s</th>
+              <th class="ce">return</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>[1,2,3,4]</td>
-              <td>[-3,-1,0,2]</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>[-1,0,1]</td>
-              <td>[1,0,-1]</td>
-              <td>-2</td>
+              <td>"Zbcdefg"</td>
+              <td>"gfedcbZ"</td>
             </tr>
           </tbody>
         </table>
-        <div class="t_code">
-          입출력 예 #1<br>
-          a와 b의 내적은 1*(-3) + 2*(-1) + 3*0 + 4*2 = 3 입니다.<br><br>
-
-          입출력 예 #2<br>
-          a와 b의 내적은 (-1)*1 + 0*0 + 1*(-1) = -2 입니다.
-        </div>
         <hr />
         <h3 class="t_tit2">🍞 문제 풀이</h3>
-        <p class="t_desc">
-          forEach문을 이용해 반복하여 내적을 구했습니다.
-        </p>
+        <p class="t_desc">sort()와 reverse()를 이용하여 내림차순으로 배치하였습니다.</p>
         <div class="t_code">
-<pre><code class="language-js">function solution(a, b) {
-  var answer = 0;
-  a.forEach((e, i)=>{
-      answer += e * b[i];
-  })
-  return answer;
+<pre><code class="language-js">function solution(s) {
+    return answer = s.split('').sort().reverse().join('');
 }
 </code></pre>
         </div>
         <hr />
         <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
-        <p class="t_desc">
-          reduce()를 이용한 풀이법입니다.
-        </p>
+        <p class="t_desc">비슷한 풀이법이지만, sort안에 조건을 작성하는 방법으로 reverse()의 사용 없이 풀이한 방법입니다.</p>
         <div class="t_code">
-<pre><code class="language-js">function solution(a, b) {
-    return a.reduce((acc, _, i) => acc += a[i] * b[i], 0);
+<pre><code class="language-js">function solution(s) {
+    return s.split("").sort((a,b) => a&lt;b ? 1:-1).join("")
 }
 </code></pre>
         </div>
         <div class="t_link">
           <a
-            href="https://school.programmers.co.kr/learn/courses/30/lessons/70128"
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/12917"
             >문제 풀어보기</a
           >
         </div>
