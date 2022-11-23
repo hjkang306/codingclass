@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - 약수의 개수와 덧셈</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          두 정수 left와 right가 매개변수로 주어집니다.<br>
+          left부터 right까지의 모든 수들 중에서, 약수의 개수가 짝수인 수는 더하고,<br>
+          약수의 개수가 홀수인 수는 뺀 수를 return 하도록 solution 함수를 완성해주세요.
+        </p>
+        <hr />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          1 ≤ left ≤ right ≤ 1,000
+        </p>
+
+        <hr />
+        <h3 class="t_tit2">🍞 입출력 예</h3>
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">left</th>
+              <th class="ce">right</th>
+              <th class="ce">result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>13</td>
+              <td>17</td>
+              <td>43</td>
+            </tr>
+            <tr>
+              <td>24</td>
+              <td>27</td>
+              <td>52</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">반복문과 삼항연산자를 사용하여 left부터 right까지의 수와 그 약수를 구하고, 짝수인 경우 더하고, 아닌 경우엔 빼주었습니다.</p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(left, right) {
+  var answer = 0;
+  for( let i=left; i&lt;=right; i++){
+      let num = 0;
+      for(let j=i; j>0; j--){
+          i%j == 0 ? num++ : num;
+      }
+      num%2==0 ? answer += i : answer -= i;
+  }
+  return answer;
+}
+</code></pre>
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
+        <p class="t_desc">i의 값의 제곱근이 정수인 경우 약수가 홀수개이며, 반대의 경우에는 약수가 짝수개인가 봅니다. 알고리즘을 잘 하려면 수학을 잘 해야 한다.</p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(left, right) {
+  var answer = 0;
+  for (let i = left; i &lt;= right; i++) {
+      if (Number.isInteger(Math.sqrt(i))) {
+          answer -= i;
+      } else {
+          answer += i;
+      }
+  }
+  return answer;
+}
+</code></pre>
+        </div>
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/77884"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
