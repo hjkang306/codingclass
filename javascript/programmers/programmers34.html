@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - 3진법 뒤집기</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          자연수 n이 매개변수로 주어집니다.<br>
+          n을 3진법 상에서 앞뒤로 뒤집은 후, 이를 다시 10진법으로 표현한 수를 return 하도록 solution 함수를 완성해주세요.
+        </p>
+        <hr />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          n은 1 이상 100,000,000 이하인 자연수입니다.
+        </p>
+
+        <hr />
+        <h3 class="t_tit2">🍞 입출력 예</h3>
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">n</th>
+              <th class="ce">result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>45</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>125</td>
+              <td>229</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">
+          toString은 숫자를 문자로 바꾸어주면서, 괄호 안에 숫자(n)를 작성할 경우 n진법으로 나타내 줍니다. 3진법으로 나타내고 뒤집은 후에, parseInt()를 이용해 해당 값을 3진법으로 게산하여 숫자로 다시 나타내었습니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(n) {
+  var answer = n.toString(3).split('').reverse().join('');
+  return parseInt(answer, 3);
+}
+</code></pre>
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
+        <p class="t_desc">펼침연산자를 사용하여 split의 과정 없이 3진법으로 표현된 n의 값을 한자리씩 배열로 저장하고 뒤집었습니다.</p>
+        <div class="t_code">
+<pre><code class="language-js">const solution = (n) => {
+  return parseInt([...n.toString(3)].reverse().join(""), 3);
+}
+</code></pre>
+        </div>
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/68935"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
