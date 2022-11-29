@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - 이상한 문자 만들기</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          문자열 s는 한 개 이상의 단어로 구성되어 있습니다.<br>
+          각 단어는 하나 이상의 공백문자로 구분되어 있습니다.<br>
+          각 단어의 짝수번째 알파벳은 대문자로, 홀수번째 알파벳은 소문자로 바꾼 문자열을 리턴하는 함수, solution을 완성하세요.
+        </p>
+        <hr />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          문자열 전체의 짝/홀수 인덱스가 아니라, 단어(공백을 기준)별로 짝/홀수 인덱스를 판단해야합니다.<br>
+          첫 번째 글자는 0번째 인덱스로 보아 짝수번째 알파벳으로 처리해야 합니다.
+        </p>
+
+        <hr />
+        <h3 class="t_tit2">🍞 입출력 예</h3>
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">s</th>
+              <th class="ce">return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"try hello world"</td>
+              <td>"TrY HeLlO WoRlD"</td>
+            </tr>
+          </tbody>
+        </table><br>
+        <div class="t_code">
+          "try hello world"는 세 단어 "try", "hello", "world"로 구성되어 있습니다.<br>
+          각 단어의 짝수번째 문자를 대문자로, 홀수번째 문자를 소문자로 바꾸면 "TrY", "HeLlO", "WoRlD"입니다.<br>
+          따라서 "TrY HeLlO WoRlD" 를 리턴합니다.
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">반복문과 toUpperCase(), toLowerCase()를 활용하였습니다. 홀수번째 수는 소문자여야 한다는 점도 잊으면 안됩니다.</p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(s) {
+  var answer = [];
+  let arr = s.split(' ');
+  for( x in arr){
+      let str = [];
+      for( i in arr[x]){
+          i%2 == 0 ? str.push(arr[x][i].toUpperCase()) : str.push(arr[x][i].toLowerCase());
+      }
+      answer.push(str.join(''))
+  }
+  return answer.join(' ');
+}
+</code></pre>
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
+        <p class="t_desc">map문을 사용하면 간편하게 요소와 인덱스를 모두 불러올 수 있습니다.</p>
+        <div class="t_code">
+<pre><code class="language-js">
+  2
+  const solution = s => s.split(" ").map(x => x.split('').map((c, i) => c = i % 2 === 0 ? c.toUpperCase() : c.toLowerCase()).join("")).join(" ");
+</code></pre>
+        </div>
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/12930#"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
