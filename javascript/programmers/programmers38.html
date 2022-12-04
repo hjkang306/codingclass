@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - K번째수</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.<br>
+
+          예를 들어 array가 [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3이라면<br>
+
+          array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다.<br>
+          1에서 나온 배열을 정렬하면 [2, 3, 5, 6]입니다.<br>
+          2에서 나온 배열의 3번째 숫자는 5입니다.<br>
+          배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때,<br>
+          commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아<br>
+          return 하도록 solution 함수를 작성해주세요.
+        </p>
+        <br />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          array의 길이는 1 이상 100 이하입니다.<br>
+          array의 각 원소는 1 이상 100 이하입니다.<br>
+          commands의 길이는 1 이상 50 이하입니다.<br>
+          commands의 각 원소는 길이가 3입니다.
+        </p>
+        <hr />
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">array</th>
+              <th class="ce">commands</th>
+              <th class="ce">return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>[1, 5, 2, 6, 3, 7, 4]</td>
+              <td>[[2, 5, 3], [4, 4, 1], [1, 7, 3]]</td>
+              <td>[5, 6, 3]</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="t_box">
+          [1, 5, 2, 6, 3, 7, 4]를 2번째부터 5번째까지 자른 후 정렬합니다. [2, 3, 5, 6]의 세 번째 숫자는 5입니다.<br>
+          [1, 5, 2, 6, 3, 7, 4]를 4번째부터 4번째까지 자른 후 정렬합니다. [6]의 첫 번째 숫자는 6입니다.<br>
+          [1, 5, 2, 6, 3, 7, 4]를 1번째부터 7번째까지 자릅니다. [1, 2, 3, 4, 5, 6, 7]의 세 번째 숫자는 3입니다.
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">
+          역시나 모르겟어서 찾아본 풀이입니다. commands에 저장된 변수는 배열의 형태로 저장되어 잇기 때문에 각 값을<br>
+          똑같이 배열의 현태로 변수를 선언하여 i, j, k에 저장하였습니다. 그리고 배열에서 해당하는 값만큼 잘라내고 정렬하여<br>
+          result라는 배열에 넣은 것 같습니다. 봐도 잘 모르겠지만 계속 보면 이해될 것도 같습니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(array, commands) {
+  let result = [];
+  
+  for (let [i,j,k] of commands) {
+      let subArray = array.slice(i-1, j);
+      subArray.sort((l,r) => l-r);
+      
+      result.push(subArray[k-1]);
+  }
+  
+  return result;
+}
+</code></pre>
+        </div>
+        <hr>
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/42748"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - 문자열 내 마음대로 정렬하기</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다.<br>
+          예를 들어 strings가 ["sun", "bed", "car"]이고 n이 1이면 각 단어의 인덱스 1의 문자 "u", "e", "a"로 strings를 정렬합니다.
+        </p>
+        <br />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          strings는 길이 1 이상, 50이하인 배열입니다.<br>
+          strings의 원소는 소문자 알파벳으로 이루어져 있습니다.<br>
+          strings의 원소는 길이 1 이상, 100이하인 문자열입니다.<br>
+          모든 strings의 원소의 길이는 n보다 큽니다.<br>
+          인덱스 1의 문자가 같은 문자열이 여럿 일 경우, 사전순으로 앞선 문자열이 앞쪽에 위치합니다.
+        </p>
+        <hr />
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">strings</th>
+              <th class="ce">n</th>
+              <th class="ce">return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>["sun", "bed", "car"]</td>
+              <td>1</td>
+              <td>["car", "bed", "sun"]</td>
+            </tr>
+            <tr>
+              <td>["abce", "abcd", "cdx"]</td>
+              <td>2</td>
+              <td>["abcd", "abce", "cdx"]</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="t_box">
+          입출력 예 1<br>
+          "sun", "bed", "car"의 1번째 인덱스 값은 각각 "u", "e", "a" 입니다.<br>
+          이를 기준으로 strings를 정렬하면 ["car", "bed", "sun"] 입니다.<br><br>
+
+          입출력 예 2<br>
+          "abce"와 "abcd", "cdx"의 2번째 인덱스 값은 "c", "c", "x"입니다.<br>
+          따라서 정렬 후에는 "cdx"가 가장 뒤에 위치합니다. "abce"와 "abcd"는 사전순으로 정렬하면 "abcd"가 우선하므로, 답은 ["abcd", "abce", "cdx"] 입니다.
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">
+          모르겠어서 찾아보았습니다. 문자 두개를 각 문자의 n번째 문자의 순서를 기준으로 정렬하는 방법 같은데 봐도 뭔소리인지 잘 모르겠습니다.
+          아시는 분은 조언 부탁드립니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(strings, n) {
+  return strings.sort((a,b) => a[n] &lt; b[n] ? -1 : a[n] > b[n] ? 1 : a &lt; b ? -1 : 1);
+}
+</code></pre>
+        </div>
+        <hr />
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/12915"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
