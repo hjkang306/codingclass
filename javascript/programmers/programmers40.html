@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - 문자열 나누기</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          문자열 s가 입력되었을 때 다음 규칙을 따라서 이 문자열을 여러 문자열로 분해하려고 합니다.<br>
+
+          먼저 첫 글자를 읽습니다. 이 글자를 x라고 합시다.<br>
+          이제 이 문자열을 왼쪽에서 오른쪽으로 읽어나가면서, x와 x가 아닌 다른 글자들이 나온 횟수를 각각 셉니다.<br>
+          처음으로 두 횟수가 같아지는 순간 멈추고, 지금까지 읽은 문자열을 분리합니다.<br>
+          s에서 분리한 문자열을 빼고 남은 부분에 대해서 이 과정을 반복합니다. 남은 부분이 없다면 종료합니다.<br>
+          만약 두 횟수가 다른 상태에서 더 이상 읽을 글자가 없다면, 역시 지금까지 읽은 문자열을 분리하고, 종료합니다.<br>
+          문자열 s가 매개변수로 주어질 때, 위 과정과 같이 문자열들로 분해하고, 분해한 문자열의 개수를 return 하는 함수 solution을 완성하세요.
+        </p>
+        <br />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          1 ≤ s의 길이 ≤ 10,000<br>
+          s는 영어 소문자로만 이루어져 있습니다.
+        </p>
+        <hr />
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">s</th>
+              <th class="ce">return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"banana"</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>"abracadabra"</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>"aaabbaccccabba"</td>
+              <td>3</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="t_box">
+          입출력 예 #1<br>
+          s="banana"인 경우 ba - na - na와 같이 분해됩니다.<br><br>
+
+          입출력 예 #2<br>
+          s="abracadabra"인 경우 ab - ra - ca - da - br - a와 같이 분해됩니다.<br><br>
+
+          입출력 예 #3<br>
+          s="aaabbaccccabba"인 경우 aaabbacc - ccab - ba와 같이 분해됩니다.
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">
+          나누기 전에 읽기 시작한 첫 글자를 변수 x에 저장하고, 같은 문자가 나올 경우 num1 값을 더하고 다른 문자가 나올 경우 num2값을 더하였습니다.
+          두 값이 같은 경우 answer의 값을 더하고, 문자열 s의 마지막에 다다른 경우, 두 값이 다르더라도 answer의 값을 더해 나뉘어진 문자로 카운트 되도록 하였습니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(s) {
+  let answer = 0;
+  let num1 = 0;
+  let num2 = 0;
+  let x = s[0]
+  for(let i = 0; i &lt; s.length; i++){
+      x == s[i] ? num1++ : num2++ ;
+      if(num1 == num2){
+          answer++
+          x = s[i+1]
+      } else if(i == s.length-1 && num1 != num2){
+          answer++
+      }
+  }
+  return answer;
+}
+</code></pre>
+        </div>
+        <hr>
+        <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
+        <p class="t_desc">
+          제 풀이법과 비슷하지만 변수를 두개 만들지 않고 배열 하나의 값 두개를 각각 컨트롤하는 방법으로 푼 풀이법입니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(str) {
+  const count = [1, 0];
+  let sel = str[0];
+  let res = 0;
+
+  for (let i=1; i&lt;str.length; i++) {
+    sel === str[i] ? count[0]++ : count[1]++;
+
+    if (count[0] === count[1]) {
+      sel = str[++i];
+      res++;
+      [count[0], count[1]] = [1, 0];
+    }
+  }
+
+  return sel ? ++res : res;
+}
+</code></pre>
+        </div>
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/140108"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
