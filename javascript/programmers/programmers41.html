@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - 기사단원의 무기</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          숫자나라 기사단의 각 기사에게는 1번부터 number까지 번호가 지정되어 있습니다. 기사들은 무기점에서 무기를 구매하려고 합니다.<br>
+
+          각 기사는 자신의 기사 번호의 약수 개수에 해당하는 공격력을 가진 무기를 구매하려 합니다.<br>
+          단, 이웃나라와의 협약에 의해 공격력의 제한수치를 정하고, 제한수치보다 큰 공격력을 가진 무기를 구매해야 하는 기사는 협약기관에서 정한 공격력을 가지는 무기를 구매해야 합니다.<br>
+
+          예를 들어, 15번으로 지정된 기사단원은 15의 약수가 1, 3, 5, 15로 4개 이므로, 공격력이 4인 무기를 구매합니다.<br>
+          만약, 이웃나라와의 협약으로 정해진 공격력의 제한수치가 3이고 제한수치를 초과한 기사가 사용할 무기의 공격력이 2라면, 15번으로 지정된 기사단원은 무기점에서 공격력이 2인 무기를 구매합니다.<br>
+          무기를 만들 때, 무기의 공격력 1당 1kg의 철이 필요합니다. 그래서 무기점에서 무기를 모두 만들기 위해 필요한 철의 무게를 미리 계산하려 합니다.<br>
+
+          기사단원의 수를 나타내는 정수 number와 이웃나라와 협약으로 정해진 공격력의 제한수치를 나타내는 정수 limit와 제한수치를 초과한 기사가 사용할 무기의 공격력을 나타내는 정수 power가 주어졌을 때,<br>
+          무기점의 주인이 무기를 모두 만들기 위해 필요한 철의 무게를 return 하는 solution 함수를 완성하시오.
+        </p>
+        <br />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          1 ≤ number ≤ 100,000<br>
+          2 ≤ limit ≤ 100<br>
+          1 ≤ power ≤ limit
+        </p>
+        <hr />
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">number</th>
+              <th class="ce">limit</th>
+              <th class="ce">power</th>
+              <th class="ce">return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5</td>
+              <td>3</td>
+              <td>2</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>3</td>
+              <td>2</td>
+              <td>21</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="t_box">
+          입출력 예 #1<br>
+          1부터 5까지의 약수의 개수는 순서대로 [1, 2, 2, 3, 2]개입니다.<br>
+          모두 공격력 제한 수치인 3을 넘지 않기 때문에 필요한 철의 무게는 해당 수들의 합인 10이 됩니다.<br>
+          따라서 10을 return 합니다.<br><br>
+
+          입출력 예 #2<br>
+          1부터 10까지의 약수의 개수는 순서대로 [1, 2, 2, 3, 2, 4, 2, 4, 3, 4]개입니다.<br>
+          공격력의 제한수치가 3이기 때문에, 6, 8, 10번 기사는 공격력이 2인 무기를 구매합니다.<br>
+          따라서 해당 수들의 합인 21을 return 합니다.
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">
+          저번에 배운, 모든 수의 약수는 제곱근을 넘지 않는다는 점과 반복문을 활용하여 약수를 구해줍니다. 그리고 약수의 갯수를 x로 카운트 해주고, x가 limit을 넘는 경우는 power를 answer에 더해주고, 
+          아닌 경우는 x를 answer에 더해서 결과를 구해줍니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(number, limit, power) {
+  var answer = 0;
+  for( let i=1; i&lt;=number; i++){
+      let x = 0;
+      for(let j=1; j&lt;=Math.sqrt(i); j++){
+          Math.sqrt(i) == j ? x++ : i%j == 0 ? x+=2 : null;
+      }
+      x &lt;= limit ? answer += x : answer += power; 
+  }
+  return answer;
+}
+</code></pre>
+        </div>
+        <hr>
+        <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
+        <p class="t_desc">
+          제 풀이법과 비슷하지만 정직하게 배열에 저장하는 과정을 모두 거친 풀이법입니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(number, limit, power) {
+  let resultArr = [];
+  let res;
+  for (let i = 1; i &lt;= number; i++) {
+      let temp = [];
+      for (let j = 1; j &lt;= Math.sqrt(i); j++) {
+          if (i%j === 0) temp.push(j);
+      }
+      res = temp.length;
+      for (let k = 0; k &lt; res; k++) {
+          temp.push(i/temp[k]);
+      }
+      resultArr.push(new Set(temp).size);
+  }
+
+  res = 0;
+  for (let i = 0; i &lt; resultArr.length; i++) {
+      if (resultArr[i] > limit) res += power;
+      else res += resultArr[i];
+  }
+  return res;
+}
+</code></pre>
+        </div>
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/136798"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
