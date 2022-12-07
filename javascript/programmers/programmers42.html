@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로그래머스</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dracula.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="document">
+        <h2 class="t_tit">프로그래머스 1단계 - 과일 장수</h2>
+        <h3 class="t_tit2">🍞 문제 설명</h3>
+        <p class="t_desc">
+          과일 장수가 사과 상자를 포장하고 있습니다.<br>
+          사과는 상태에 따라 1점부터 k점까지의 점수로 분류하며, k점이 최상품의 사과이고 1점이 최하품의 사과입니다.<br>
+          사과 한 상자의 가격은 다음과 같이 결정됩니다.<br><br>
+
+          한 상자에 사과를 m개씩 담아 포장합니다.<br>
+          상자에 담긴 사과 중 가장 낮은 점수가 p (1 ≤ p ≤ k)점인 경우, 사과 한 상자의 가격은 p * m 입니다.<br>
+          과일 장수가 가능한 많은 사과를 팔았을 때, 얻을 수 있는 최대 이익을 계산하고자 합니다.<br>
+          (사과는 상자 단위로만 판매하며, 남는 사과는 버립니다)<br><br>
+
+          예를 들어, k = 3, m = 4, 사과 7개의 점수가 [1, 2, 3, 1, 2, 3, 1]이라면,<br>
+          다음과 같이 [2, 3, 2, 3]으로 구성된 사과 상자 1개를 만들어 판매하여 최대 이익을 얻을 수 있습니다.<br><br>
+
+          (최저 사과 점수) x (한 상자에 담긴 사과 개수) x (상자의 개수) = 2 x 4 x 1 = 8<br>
+          사과의 최대 점수 k, 한 상자에 들어가는 사과의 수 m, 사과들의 점수 score가 주어졌을 때, 과일 장수가 얻을 수 있는 최대 이익을 return하는 solution 함수를 완성해주세요.
+        </p>
+        <br />
+        <h3 class="t_tit2">🍞 제한 조건</h3>
+        <p class="t_desc2">
+          3 ≤ k ≤ 9<br>
+          3 ≤ m ≤ 10<br>
+          7 ≤ score의 길이 ≤ 1,000,000<br>
+          1 ≤ score[i] ≤ k<br>
+          이익이 발생하지 않는 경우에는 0을 return 해주세요.
+        </p>
+        <hr />
+        <table class="t_table">
+          <thead>
+            <tr>
+              <th class="ce">k</th>
+              <th class="ce">m</th>
+              <th class="ce">score</th>
+              <th class="ce">result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>3</td>
+              <td>4</td>
+              <td>[1, 2, 3, 1, 2, 3, 1]</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>3</td>
+              <td>[4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2]</td>
+              <td>33</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="t_box">
+          입출력 예 #1<br>
+          문제의 예시와 같습니다.<br><br>
+
+          입출력 예 #2<br>
+          다음과 같이 사과 상자를 포장하여 모두 팔면 최대 이익을 낼 수 있습니다.<br>
+          사과 | 상자	가격<br>
+          [1, 1, 2]	| 1 x 3 = 3<br>
+          [2, 2, 2]	| 2 x 3 = 6<br>
+          [4, 4, 4]	| 4 x 3 = 12<br>
+          [4, 4, 4]	| 4 x 3 = 12<br>
+          따라서 (1 x 3 x 1) + (2 x 3 x 1) + (4 x 3 x 2) = 33을 return합니다.
+        </div>
+        <hr />
+        <h3 class="t_tit2">🍞 문제 풀이</h3>
+        <p class="t_desc">
+          제한시간 초과때문에 조금 곤란했던 문제입니다. sort로 내립차순으로 정렬해준 뒤에 
+          m개씩 나눈 구간 중 가장 작은 수가 위치할 i*m-1번째 score에 사과 갯수 m을 곱하여 결과값을 얻었습니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(k, m, score) {
+  var answer = 0;
+  let arr = score.sort((a,b) => b - a);
+  for(let i = 1; i&lt;=score.length/m; i++){
+      answer += arr[i*m-1]*m;
+  }
+  return answer;
+}
+</code></pre>
+        </div>
+        <hr>
+        <h3 class="t_tit2">🍞 다른 이의 풀이</h3>
+        <p class="t_desc">
+          제 풀이법과 비슷하지만 slice로 값을 뽑아낸 풀이법입니다.
+        </p>
+        <div class="t_code">
+<pre><code class="language-js">function solution(k, m, score) {
+  let answer = 0;
+  const sortedScore = score.slice().sort((a, b) => a - b).slice(score.length % m);
+  for (let i = 0; i &lt; sortedScore.length; i += m) {
+      answer += sortedScore[i] * m;
+  }
+  return answer;
+}
+</code></pre>
+        </div>
+        <div class="t_link">
+          <a
+            href="https://school.programmers.co.kr/learn/courses/30/lessons/135808"
+            >문제 풀어보기</a
+          >
+        </div>
+      </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+      <a href="mailto:hjkang306@naver.com">hjkang306@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
